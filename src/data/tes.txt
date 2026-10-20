@@ -1,0 +1,75 @@
+  explore: {
+    section: {
+      id: 'explore',
+      //container disini khusus krn section aja yg wajib ada pengaturan customContainer nya
+      containerClass: 'max-w-360 flex justify-center', 
+      stackDirection: 'row', // Menggunakan kekuatan flex-row untuk layout menyamping desktop 
+      stackClass:
+      titleElement: 'h2',
+      //u/ section by default titleElement nya h2 , content h3, detail h4, subtitle tinggal h+1 sesuai hirarki, description nya p 
+      titleClass: 
+      'font-black text-primary-300 text-left tracking-tight text-[65px] leading-17',
+        'gap-15 flex-col lg:flex-row items-stretch',      // 🟢 STACK 2 (DALAM): Mengatur baju dan tata letak kolom teks sebelah kanan
+      
+      // MODULAR GAMBAR
+      imageContainerClass: 'w-full lg:max-w-[48%] h-172 flex justify-center items-center',
+      imageClass: 'h-full w-auto object-contain rounded-3xl',
+      imageSource: exploreImg,
+    },
+    content: {
+      id: 'explore',
+      stackDirection: 'col', // Menggunakan kekuatan flex-row untuk layout menyamping desktop 
+      stackClass:      titleElement: 'h2',
+      titleClass:
+      'font-black text-primary-300 text-left tracking-tight text-[65px] leading-17',
+      stackDirection: 'row', // Menggunakan kekuatan flex-row untuk layout menyamping desktop 
+      stackClass:
+        'gap-15 flex-col lg:flex-row items-stretch',      // 🟢 STACK 2 (DALAM): Mengatur baju dan tata letak kolom teks sebelah kanan
+      
+      // MODULAR GAMBAR
+      imageContainerClass: 'w-full lg:max-w-[48%] h-172 flex justify-center items-center',
+      imageClass: 'h-full w-auto object-contain rounded-3xl',
+      imageSource: exploreImg,
+    },
+    detail: {
+      id: 'explore',
+      stackDirection: 'col', // Menggunakan kekuatan flex-row untuk layout menyamping desktop 
+      stackClass:      titleElement: 'h2',
+      titleClass:
+      'font-black text-primary-300 text-left tracking-tight text-[65px] leading-17',
+      stackDirection: 'row', // Menggunakan kekuatan flex-row untuk layout menyamping desktop 
+      stackClass:
+        'gap-15 flex-col lg:flex-row items-stretch',      // 🟢 STACK 2 (DALAM): Mengatur baju dan tata letak kolom teks sebelah kanan
+      
+      // MODULAR GAMBAR
+      imageContainerClass: 'w-full lg:max-w-[48%] h-172 flex justify-center items-center',
+      imageClass: 'h-full w-auto object-contain rounded-3xl',
+      imageSource: exploreImg,
+    },
+    cardLayout: {
+      stackClass:
+        'flex flex-col gap-1 p-5 rounded-2xl bg-primary-500 text-white text-left w-full min-w-70 max-w-130 shadow-sm',
+      headerClass: 'flex flex-col gap-1',
+      titleClass: 'text-lg lg:text-2xl font-bold text-primary-200 leading-snug', // Judul list warna mint terang
+      descriptionClass:
+        'text-sm lg:text-base text-white/80 font-normal leading-normal',
+      titleElement: 'h3',
+    },
+    data: [
+      {
+        id: 'sol-1',
+        title: 'Fast Shipping Options',
+        desc: 'Get solution for the fast shipping options',
+      },
+      {
+        id: 'sol-2',
+        title: 'Competitive Rates Offered',
+        desc: 'Get the Best Price',
+      },
+      {
+        id: 'sol-3',
+        title: 'Customized Services Available',
+        desc: 'Get Started Today',
+      },
+    ],
+  },

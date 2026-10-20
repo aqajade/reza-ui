@@ -1,0 +1,15 @@
+import { StackElement } from '@/types/layout/page-config';
+
+import { StackLayout, StackLayoutProps } from './StackLayout';
+
+type SectionStackProps = Omit<StackLayoutProps, 'as'> & {
+  /** Elemen HTML section. Default: section */
+  stackElement?: StackElement;
+};
+
+export function SectionStack({
+  stackElement = 'section',
+  ...props
+}: SectionStackProps) {
+  return <StackLayout as={stackElement} {...props} />;
+}

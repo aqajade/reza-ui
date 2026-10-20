@@ -1,0 +1,18 @@
+import { landingPageData } from '@/data/landing-page-data';
+import { parseRawImage } from '@/lib/fluid-image';
+
+import { ImageContainer } from '../layout/ImageContainer';
+import { SectionHeader } from '../layout/SectionHeader';
+import { SectionStack } from '../layout/SectionStack';
+
+export function Awal() {
+  const { section, content } = landingPageData.explore;
+  return (
+    <div>
+      <SectionStack>
+        <ImageContainer config={parseRawImage(section.image)} />
+        <SectionHeader title='titledisini' />
+      </SectionStack>
+    </div>
+  );
+}

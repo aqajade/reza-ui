@@ -1,0 +1,45 @@
+// src/components/layout/ImageContainer.tsx
+import Image, { StaticImageData } from 'next/image';
+import * as React from 'react';
+
+import { cn } from '@/lib/utils';
+
+type ImageContainerProps = React.ComponentProps<'div'> & {
+  imageContainerClass?: string;
+  imageSrc?: StaticImageData;
+  imageClass?: string;
+  imageAlt?: string;
+  imagePriority?: boolean;
+  // src?: string | StaticImageData;
+  // alt?: string;
+};
+
+export function ImageContainer({
+  // src = '',
+  className,
+  imageSrc,
+  imageContainerClass,
+  imageClass,
+  imageAlt = '',
+  imagePriority = false, // bip: default-kan ke false agar lazy load aktif otomatis
+  ...props
+}: ImageContainerProps) {
+    if (!imageSrc) return null;
+  return (
+    <div
+      className={cn(
+        'relative flex items-center justify-center overflow-hidden',
+        imageContainerClass,
+        className
+      )}
+      {...props}
+    >
+      <Image
+        src={imageSrc}
+        alt={imageAlt}
+        className={cn('', imageClass)}
+        priority={imagePriority}
+      />
+    </div>
+  );
+}

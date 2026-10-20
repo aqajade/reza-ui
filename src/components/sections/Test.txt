@@ -1,0 +1,54 @@
+// src/components/sections/eco.tsx
+
+// 🟢 KUNCI SAKTI BIP: Static Image Import agar VS Code auto-detect super lancar!
+import { CustomContainer } from '@/components/layout/CustomContainer';
+import { PageSection } from '@/components/layout/PageSection';
+import { StackLayout } from '@/components/layout/StackLayout';
+import { homePageDataSource } from '@/data/landing-page-data';
+import { cn } from '@/lib/utils';
+
+import { CardHeader } from '../layout/CardHeader';
+import { Grid } from '../layout/Grid';
+import { SectionHeader } from '../layout/SectionHeader';
+
+export function Services() {
+  // Ambil pasokan data murni dari single source of truth (SSOT)
+  const { layout, gridClass, cardLayout, title, data } =
+    homePageDataSource.services;
+  return (
+    <PageSection
+      id={layout.id}
+      sectionClass={layout.sectionClass} // Memasang bg-neutral-25 dan padding dari Excel
+    >
+      <CustomContainer className=''>
+        <StackLayout
+          direction={layout.stackDirection}
+          stackClass={layout.stackClass}
+        >
+          <SectionHeader
+            headingElement={layout.headingElement}
+            title={title}
+            headingClass={layout.headingClass}
+          />
+
+          <Grid gridClass={gridClass}>
+            {data.map((item, index) => (
+              // Pembungkus Kotak Kartu Hijau Mint
+              <div key={index} className={cn(cardLayout.cardStackClass)}>
+                {/* Distribusi 3 teks internal kartu (Mendukung auto-highlight span) */}
+                <CardHeader
+                  headingElement={cardLayout.headingElement}
+                  cardTitle={item.title}
+                  cardDescIntro={item.desc} // Masukkan teks desc ke dalam radar parser pembelah kurung siku
+                  cardHeaderClass={cardLayout.cardHeaderClass}
+                  headingClass={cardLayout.headingClass}
+                  descIntroClass={cardLayout.paragraphClass}
+                />
+              </div>
+            ))}
+          </Grid>
+        </StackLayout>
+      </CustomContainer>
+    </PageSection>
+  );
+}

@@ -1,0 +1,119 @@
+// src/types/layout/page-config.ts
+
+/**
+ * ==========================================================================
+ * 1. LAYOUT PRIMITIF CONFIG (Mendukung PageSection & CustomContainer)
+ * ==========================================================================
+ */
+export type SectionLayoutConfig = {
+  /** ID unik untuk navigasi anchor HTML (e.g., 'header', 'hero', 'services') */
+  id: string;
+  /** Baju container: 'default' (globals.css) atau 'custom' (suntikan rumus px Excel) */
+  containerVariant: 'default' | 'custom' | string;
+  /** String rumus max-width pecahan ganjil milik Excel kamu */
+  containerCustomStyle?: string;
+  /** Class tambahan opsional untuk sekat luar (e.g., 'bg-slate-50', 'sticky top-0') */
+  sectionClass?: string;
+};
+
+/**
+ * ==========================================================================
+ * 2. MIKRO COMPONENT TOKENS (Mengawal Token Rumus TEXTJOIN Card Kamu)
+ * ==========================================================================
+ */
+export type CardLayoutConfig = {
+  /** Hasil rumus TEXTJOIN gap flex-col pembungkus utama kartu */
+  cardStackClass: string;
+  /** Hasil rumus TEXTJOIN gap flex-col teks dalam kartu */
+  cardHeaderClass: string;
+  /** Kelas ukuran dan ketebalan font judul kartu dari Excel */
+  headingClass: string;
+  /** Kelas ukuran dan warna font deskripsi kartu dari Excel */
+  paragraphClass: string;
+  /** Menentukan wujud tag judul kartu dari luar (default: 'h3') */
+  headingElement?: 'h2' | 'h3' | 'h4' | 'h5';
+};
+
+/**
+ * ==========================================================================
+ * 3. SUB-TYPES DATA KONTEN LANDING PAGE (Payload Array Looping)
+ * ==========================================================================
+ */
+export type ServiceItem = {
+  title: string;
+  desc: string;
+  img: string;
+};
+
+export type ProjectItem = {
+  title: string;
+  img: string;
+};
+
+export type MemberItem = {
+  title: string;
+  desc: string;
+  img: string;
+};
+
+export type FormFieldItem = {
+  label: string;
+  id: string;
+  type: 'text' | 'email' | 'textarea' | string;
+  placeholder: string;
+};
+
+/**
+ * ==========================================================================
+ * 4. MAIN HOMEPAGE BLUEPRINT (The Single Source of Truth / SSOT)
+ * ==========================================================================
+ */
+export type HomePageConfig = {
+  header: { // 🟢 SEMANTIK MURNI: Mengganti kata 'navbar' menjadi 'header' sesuai preferensi BIP kamu!
+    layout: SectionLayoutConfig;
+  };
+  hero: {
+    layout: SectionLayoutConfig;
+    title: string;
+    desc: string;
+  };
+  about: {
+    layout: SectionLayoutConfig;
+    title: string;
+    desc: string;
+  };
+  service: {
+    layout: SectionLayoutConfig;
+    gridClass: string;
+    cardLayout: CardLayoutConfig;
+    title: string;
+    desc: string;
+    data: ServiceItem[];
+  };
+  projects: {
+    layout: SectionLayoutConfig;
+    gridClass: string;
+    cardLayout: CardLayoutConfig;
+    title: string;
+    desc: string;
+    data: ProjectItem[];
+  };
+  team: {
+    layout: SectionLayoutConfig;
+    gridClass: string;
+    cardLayout: CardLayoutConfig;
+    title: string;
+    desc: string;
+    data: MemberItem[];
+  };
+  contact: {
+    layout: SectionLayoutConfig;
+    title: string;
+    desc: string;
+    formClass: string;
+    fields: FormFieldItem[];
+  };
+  footer: {
+    layout: SectionLayoutConfig;
+  };
+};

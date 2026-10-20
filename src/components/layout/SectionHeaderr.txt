@@ -1,0 +1,103 @@
+// src/components/layout/SectionHeader.tsx
+import * as React from 'react';
+
+import { cn } from '@/lib/utils';
+
+type CardHeaderProps = React.ComponentProps<'div'> & {
+  cardTitle: string;
+  cardSubtitle?: string;
+  cardDescIntro?: string;
+  cardDescEnd?: string;
+  cardHeaderClass?: string;
+  headingClass?: string;
+  subHeadingClass?: string;
+  descIntroClass?: string;
+  descEndClass?: string;
+  headingElement?: 'h2' | 'h3' | 'h4'| 'h5';
+  subHeadingElement?: 'h2' | 'h3' | 'h4' | 'h5';
+  paragraphElement?: 'p' | 'span' | 'div';
+};
+
+export function CardHeader({
+  className,
+  cardHeaderClass,
+  cardTitle,
+  cardSubtitle,
+  cardDescIntro,
+  cardDescEnd,
+  headingClass,
+  subHeadingClass,
+  descIntroClass,
+  descEndClass,
+  headingElement = 'h3',
+  subHeadingElement = 'h4',
+  paragraphElement = 'p',
+  ...props
+}: CardHeaderProps) {
+  const HeadingComponent = headingElement;
+  const SubHeadingComponent = subHeadingElement;
+  const ParagraphComponent = paragraphElement;
+
+  // Helper reuseable untuk memecah teks dan menyelipkan span font-bold kustom
+  const parseHighlightText = (text: string, defaultClass: string) => {
+    if (!text.includes('[') || !text.includes(']')) {
+      return (
+        <ParagraphComponent className={defaultClass}>{text}</ParagraphComponent>
+      );
+    }
+
+    return (
+      <ParagraphComponent className={defaultClass}>
+        {text.split(/(\[.*?\])/).map((part, index) => {
+          if (part.startsWith('[') && part.endsWith(']')) {
+            const cleanWord = part.slice(1, -1);
+            return (
+              // 🛠️ SUNTIKKAN SPAN TEBAL DI SINI: Otomatis aktif saat mendeteksi kurung siku!
+              <span key={index} className='font-extrabold'>
+                {cleanWord}
+              </span>
+            );
+          }
+          return part;
+        })}
+      </ParagraphComponent>
+    );
+  };
+
+  return (
+    <div className={cn('flex flex-col', cardHeaderClass, className)} {...props}>
+      {/* 1. CARD TITLE */}
+      <HeadingComponent
+        className={cn(
+          'font-bold tracking-tight text-neutral-900',
+          headingClass
+        )}
+      >
+        {cardTitle}
+      </HeadingComponent>
+
+      {/* 2. CARD SUBTITLE */}
+      {cardSubtitle && (
+        <SubHeadingComponent
+          className={cn('font-medium text-neutral-700', subHeadingClass)}
+        >
+          {cardSubtitle}
+        </SubHeadingComponent>
+      )}
+
+      {/* 3. CARD DESCRIPTION INTRO (Sudah mendukung auto-highlight span) */}
+      {cardDescIntro &&
+        parseHighlightText(
+          cardDescIntro,
+          cn('font-medium text-neutral-600', descIntroClass)
+        )}
+
+      {/* 4. CARD DESCRIPTION END (Sudah mendukung auto-highlight span) */}
+      {cardDescEnd &&
+        parseHighlightText(
+          cardDescEnd,
+          cn('font-normal text-neutral-500', descEndClass)
+        )}
+    </div>
+  );
+}

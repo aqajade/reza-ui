@@ -1,0 +1,69 @@
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.addMissingImports": "explicit",
+    "source.organizeImports": "explicit"
+  },
+  "prettier.tabWidth": 2,
+  "prettier.useTabs": false,
+  "prettier.semi": true,
+  "prettier.singleQuote": true,
+  "prettier.jsxSingleQuote": true,
+  "prettier.trailingComma": "es5",
+  "prettier.arrowParens": "always",
+
+  // lf config with eol
+  "prettier.endOfLine": "lf",
+  "files.eol": "\n",
+
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.quickSuggestions": {
+      "strings": true
+    }
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.quickSuggestions": {
+      "strings": true
+    }
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "files.exclude": {
+    "**/node_modules": true,
+    "next-env.d.ts": true,
+    "**/.vscode": true
+  },
+
+  /* ==========================================================================
+     🟢 REGEX TAILWIND INTELLISENSE UNTUK OBJECT PROPERTY BERAKHIRAN Class / class
+     ========================================================================== */
+  "tailwindCSS.experimental.classRegex": [
+    "[a-zA-Z0-9_-]*[cC]lass\\s*:\\s*['\"`]([^'\"`]*?)['\"`]",
+    "[a-zA-Z0-9_-]*[cC]lass\\s*=\\s*{?\\s*['\"`]([^'\"`]*?)['\"`](?:\\s*|\\s*})"
+  ],
+
+  /* ==========================================================================
+     🟢 PETAKAN TYPESCRIPT KE JAVASCRIPTREACT DENGAN DUKUNGAN QUICK SUGGESTIONS
+     ========================================================================== */
+  "tailwindCSS.includeLanguages": {
+    "typescript": "javascriptreact",
+    "typescriptreact": "javascriptreact"
+  },
+
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+
+  "tailwindCSS.emmetCompletions": true,
+
+  "tailwindCSS.classAttributes": ["className", "class", ".*Class", ".*class"]
+}

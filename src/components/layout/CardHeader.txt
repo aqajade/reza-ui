@@ -1,0 +1,94 @@
+// src/components/layout/card/CardHeader.tsx
+import * as React from 'react';
+
+import { cn } from '@/lib/utils';
+
+/**
+ * 1. KONTRAK TYPE: DISELARASKAN 100% DENGAN OBJEK DATA EXCEL 🟢
+ */
+type CardHeaderProps = React.ComponentProps<'div'> & {
+  // SINKRON: Meniru persis key dari page-data.ts kamu!
+  cardTitle: string;
+  cardSubtitle?: string;
+  cardDescIntro?: string;
+  cardDescEnd?: string;
+
+  // Kelas kustom Tailwind v4 penjinak tipografi diverse dari Excel
+  cardHeaderClass?: string;
+  headingClass?: string;
+  subHeadingClass?: string;
+  descIntroClass?: string;
+  descEndClass?: string;
+
+  // Elemen tag dinamis semantik (Polymorphic)
+  headingElement?: 'h1' | 'h2' | 'h3' | 'h4';
+  subHeadingElement?: 'h2' | 'h3' | 'h4' | 'h5';
+  paragraphElement?: 'p' | 'span' | 'div';
+};
+
+/**
+ * 2. KOMPONEN CARDHEADER IMPLEMENTASI (PASCALCASE)
+ */
+export function CardHeader({
+  className,
+  cardHeaderClass,
+  cardTitle,
+  cardSubtitle,
+  cardDescIntro,
+  cardDescEnd,
+  headingClass,
+  subHeadingClass,
+  descIntroClass,
+  descEndClass,
+  headingElement = 'h3', // Default tag untuk judul kartu
+  subHeadingElement = 'h4', // Default tag untuk sub-judul kartu
+  paragraphElement = 'p', // Default tag untuk paragraf deskripsi
+  ...props
+}: CardHeaderProps) {
+  // Mengubah menjadi huruf kapital awal agar dikenali React sebagai tag dinamis
+  const HeadingComponent = headingElement;
+  const SubHeadingComponent = subHeadingElement;
+  const ParagraphComponent = paragraphElement;
+
+  return (
+    // Menyatukan flex-col bawaan dan suntikan gap dari rumus TEXTJOIN Excel kamu
+    <div className={cn('flex flex-col', cardHeaderClass, className)} {...props}>
+      {/* 🟢 LINE 1: CARD TITLE (e.g., Tailored logistics to enhance...) */}
+      <HeadingComponent
+        className={cn(
+          'font-bold tracking-tight text-neutral-900',
+          headingClass
+        )}
+      >
+        {cardTitle}
+      </HeadingComponent>
+
+      {/* 🟢 LINE 2: CARD SUBTITLE (Hanya render jika datanya diisi dari Excel) */}
+      {cardSubtitle && (
+        <SubHeadingComponent
+          className={cn('font-medium text-neutral-700', subHeadingClass)}
+        >
+          {cardSubtitle}
+        </SubHeadingComponent>
+      )}
+
+      {/* 🟢 LINE 3: CARD DESCRIPTION INTRO (Teks Pengantar Bold/Medium) */}
+      {cardDescIntro && (
+        <ParagraphComponent
+          className={cn('font-medium text-neutral-600', descIntroClass)}
+        >
+          {cardDescIntro}
+        </ParagraphComponent>
+      )}
+
+      {/* 🟢 LINE 4: CARD DESCRIPTION END (Teks Paragraf Penutup Reguler) */}
+      {cardDescEnd && (
+        <ParagraphComponent
+          className={cn('font-normal text-neutral-500', descEndClass)}
+        >
+          {cardDescEnd}
+        </ParagraphComponent>
+      )}
+    </div>
+  );
+}

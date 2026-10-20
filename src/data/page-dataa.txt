@@ -1,0 +1,280 @@
+// src/config/page-data.ts
+import ecoImg from '@/../public/images/eco/eco.png';
+import expertiseImg from '@/../public/images/expertise/expertise.png';
+import exploreImg from '@/../public/images/explore/explore.png';
+import heroImg from '@/../public/images/hero/hero.png';
+import logoImg from '@/../public/images/hero/logo.png';
+import networkImg from '@/../public/images/network/network.png';
+import tailoredImg from '@/../public/images/tailored/tailored.png';
+import trackingImg from '@/../public/images/tracking/tracking.png';
+import { LandingPageConfig } from '@/types/layout/landing-page-config';
+import { RawImageConfig } from '@/types/layout/page-config';
+export const landingPageData: LandingPageConfig = {
+  header: {
+    section: {
+      layout: {
+        stackElement: 'header',
+      },
+    },
+  },
+
+  /** 2. HERO SECTION (JANGAN DIUTAK-ATIK) */
+  hero: {
+    section: {
+      layout: {
+        id: 'hero',
+        stackDirection: 'row',
+        stackClass:
+          'bg-white pt-[clamp(27px, 23.9971px + 0.7641vw, 35px)] pb-[clamp(65px, 58.2436px + 1.7192vw, 83px)]',
+      },
+      header: {
+        headerClass:'w-[clamp(350px,277.9312px+18.3381vw,542px)] items-center justify-center gap-6',
+        title: 'Welcome to \n Our Freight Forwarding Services',
+        titleClass:
+          'w-[clamp(335px,249.043px+21.872vw,564px)] text-[clamp(55px,50.1203px+1.2416vw,68px)] leading-[clamp(48px,43.4957px+1.1461vw,60px)] font-black text-primary-400 text-center',
+        subTitle: 'TUI Logistik Indonesia',
+        subTitleClass:'order-3 text-primary-400 text-center text-[clamp(29px,24.8711px+1.0506vw,40px)] font-black',
+        description:
+          'We provide reliable and efficient freight forwarding solutions tailored to meet your business needs and ensure seamless shipping.',
+        descriptionClass: 'text-[22px] text-primary-400',
+      },
+      image: {
+        src: logoImg,
+        alt: 'logo image',
+        priority: true,
+        minWidth: 137,
+        maxWidth: 171,
+        containerClass: 'overflow-hidden rounded-2xl',
+      },
+    },
+    content: {
+      image: {
+        src: heroImg,
+        alt: 'hero image',
+        priority: true,
+        minWidth: 361,
+        maxWidth: 497,
+        containerClass: 'lg:pt-10.5 overflow-hidden rounded-2xl',
+      },
+    },
+  },
+
+  /** 3. TAILORED SECTION (section: Kiri Gambar Kapal, Kanan Teks Deskripsi) */
+  tailored: {
+    section: {
+      id: 'tailored',
+      stackClass: 'bg-neutral-25 py-16 lg:py-24',
+      title: 'STREAMLINED LOGISTICS SOLUTIONS',
+    },
+    card: {
+      title: 'Tailored logistics to enhance your efficiency',
+      subTitle: 'Simplifying your shipping experience',
+      descriptionIntro:
+        'At our company, we specialize in providing [streamlined logistics solutions] tailored to meet your specific business needs. Our expert team ensures that every shipment is handled with precision and care.',
+      descriptionOutro:
+        'We understand the complexities of freight forwarding and strive to simplify the process for you. By leveraging our extensive network and innovative technologies, we guarantee timely and efficient delivery of your goods, allowing you to focus on growing your business.',
+    },
+    img: tailoredImg,
+  },
+
+  /** 4. EXPERTISE SECTION (section: Kiri Teks Pertanyaan, Kanan Gambar Kapal Cargo) */
+  expertise: {
+    section: {
+      id: 'expertise',
+      stackClass: 'bg-neutral-25 py-16 lg:py-24',
+    },
+    cardTitle: 'Expertise in Freight Forwarding',
+    cardSubTitle: 'Why Trust Our Experienced Team?',
+    cardDescriptionIntro:
+      "Our freight forwarding services ensure [seamless logistics] tailored to your business's unique needs. With years of experience in the industry, we navigate complex shipping routes and regulations on your behalf, providing peace of mind.",
+    cardDescriptionEnd:
+      'We pride ourselves on our [dedication to customer satisfaction]. Our knowledgeable team is committed to delivering efficient solutions, ensuring that your shipments arrive on time and intact, no matter where in the world they are headed.',
+    img: expertiseImg,
+  },
+
+  /** 5. TRACKING SECTION (section: Kiri Gambar Monitor Map, Kanan Teks Fitur) */
+  tracking: {
+    section: {
+      id: 'tracking',
+      stackClass: 'bg-neutral-25 py-16 lg:py-24',
+    },
+    cardTitle: 'Efficiently track your shipments at every stage',
+    cardSubTitle: 'Reliable tracking and shipment management solutions',
+    cardDescriptionIntro:
+      "Our freight forwarding services prioritize [comprehensive tracking] and management for all shipments, ensuring you have real-time visibility into your cargo's journey. This commitment allows you to stay informed and make timely decisions that benefit your business.",
+    cardDescriptionEnd:
+      'By leveraging cutting-edge technology, we provide detailed updates and analytics that enhance your logistics experience. Our goal is to ensure your shipments are handled with care, arriving safely and on schedule, while you focus on growing your business.',
+    img: trackingImg,
+  },
+
+  /** 6. NETWORK SECTION (section: Kiri Teks Jaringan, Kanan Gambar Ilustrasi) */
+  network: {
+    section: {
+      id: 'network',
+      stackClass: 'bg-neutral-25 py-16 lg:py-24',
+    },
+    cardTitle: 'Our extensive global network ensures timely deliveries',
+    cardSubTitle: 'Efficient logistics for your international shipments',
+    cardDescriptionIntro:
+      'At our company, we pride ourselves on having a [robust global network] that facilitates efficient logistics solutions across multiple regions. With strategic partnerships and local expertise, we navigate the complexities of international shipping to ensure your goods arrive on time and in perfect condition.',
+    cardDescriptionEnd:
+      'Our team is committed to [providing exceptional service]. By leveraging technology and our extensive contacts, we streamline the shipping process, making it hassle-free for our clients. Trust us to handle your logistics needs with professionalism and care.',
+    img: networkImg,
+  },
+
+  /** 7. ECO SECTION (section: Kiri Gambar Depan Kapal, Kanan Teks Eco) */
+  eco: {
+    section: {
+      id: 'eco',
+      stackClass: 'bg-neutral-25 py-16 lg:py-24',
+    },
+    cardTitle: 'Committing to eco-friendly logistics solutions',
+    cardSubTitle: 'Innovating for a greener tomorrow',
+    cardDescriptionIntro:
+      'At our freight forwarding company, we believe in [sustainable practices] that minimize our environmental footprint. Our commitment includes using energy-efficient transport options, optimizing routing to reduce emissions, and collaborating with partners who share our vision for a greener future.',
+    cardDescriptionEnd:
+      'By integrating these practices, we aim to create a more sustainable supply chain that benefits both our clients and the planet.',
+    img: ecoImg,
+  },
+
+  /** 8. SERVICES SECTION (section: Grid 3 Kolom Kartu Sejajar Sesuai Gambar) */
+  services: {
+    section: {
+      id: 'services',
+      stackDirection: 'col',
+      stackClass: 'gap-[clamp(24px,11.9885px+3.0564vw,56px)]',
+      titleElement: 'h2',
+      titleClass:
+        'text-[clamp(46px,40.3696px+1.4327vw,61px)] leading-11 text-center font-black text-primary-400',
+    },
+    // Mengunci susunan 3 kolom sejajar bawaan figma lewat pasokan string murni
+    gridClass: 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8',
+    cardsection: {
+      cardStackClass:
+        'flex flex-col gap-6 p-8 rounded-xl bg-primary-200 text-center items-center justify-start border h-[clamp(360px,300.6934px+15.0907vw,480px)]',
+      cardHeaderClass:
+        'flex flex-col gap-[clamp(24px,-3.0258px+6.8768vw,96px)]',
+      titleClass:
+        'text-[24px] lg:text-2xl font-extrabold text-primary-300 leading-tight tracking-wide',
+      paragraphClass:
+        'text-md lg:text-lg text-primary-300 leading-6 font-medium',
+      titleElement: 'h3',
+    },
+    title: 'OUR FREIGHT FORWARDING SERVICES',
+    data: [
+      {
+        title: 'Air Freight Solutions for Swift Deliveries',
+        desc: 'Our air freight services ensure [rapid transit] of goods, tailored to meet your business deadlines, while maintaining cost-effectiveness and reliability throughout the shipping process.',
+      },
+      {
+        title: 'Ocean Freight for Large Shipments',
+        desc: 'We offer comprehensive ocean freight solutions, ideal for bulk shipments. Our expertise guarantees safe and efficient transport across global waters, accommodating diverse cargo types and sizes.',
+      },
+      {
+        title: 'Land Transport for Local and Regional Needs',
+        desc: 'Our land transport services connect your shipments efficiently within local and regional markets, utilizing a robust network of vehicles to ensure timely deliveries and seamless logistics management.',
+      },
+    ],
+  },
+
+  /** 9. EXPLORE SECTION (section: Kiri Gambar Truk Pink, Kanan Teks List Opsi Hijau) */
+  explore: {
+    section: {
+      id: 'explore',
+      containerClass: 'max-w-360 flex justify-center',
+      title: 'Explore Our Solutions',
+      titleElement: 'h2',
+      titleClass:
+        'font-black text-primary-300 text-left tracking-tight text-[65px] leading-17',
+      stackDirection: 'row', // M
+      image: {
+        // containerClass: 'menyesuaikan',
+        // elementClass: 'menyesuaikan'
+        minWidth: 347,
+        maxWidth: 662,
+        src: exploreImg,
+        alt: 'explore image',
+        // bip: WAJIB pasang aspect ratio di sini agar tinggi container tidak 0
+        // containerClass: 'aspect-657/763 rounded-3xl shadow-xl',
+        priority: true,
+        // priority: boolean
+        // karena udh ada minWidth dan maxWidth harapannya style yg clamp td masuk ke ImageContainer dan size nya juga otomatis masuk ke sana via helper yg sebelumnya
+      } as RawImageConfig,
+    },
+    content: {
+      stackClass:
+        'w-full lg:max-w-[50%] justify-center gap-6 bg-primary-100 p-6 rounded-3xl',
+    },
+    card: {
+      stackClass:
+        'flex flex-col gap-1 p-5 rounded-2xl bg-primary-500 text-white text-left w-full min-w-70 max-w-130 shadow-sm',
+      headerClass: 'flex flex-col gap-1',
+      titleClass: 'text-lg lg:text-2xl font-bold text-primary-200 leading-snug', // Judul list warna mint terang
+      descriptionClass:
+        'text-sm lg:text-base text-white/80 font-normal leading-normal',
+      titleElement: 'h3',
+    },
+    data: [
+      {
+        title: 'Fast Shipping Options',
+        description: 'Get solution for the fast shipping options',
+      },
+      {
+        title: 'Competitive Rates Offered',
+        description: 'Get the Best Price',
+      },
+      {
+        title: 'Customized Services Available',
+        description: 'Get Started Today',
+      },
+    ],
+  },
+
+  /** 10. PROCESS SECTION (section: Atas Judul, Bawah Diagram Infografis) */
+  process: {
+    section: {
+      id: 'process',
+      stackClass: 'py-16 lg:py-24 text-center',
+      title: 'Understanding Freight Forwarding Process',
+      description:
+        'A methodical breakdown detailing your freight lifecycle—from strategic inventory consolidation down to strict port border checkouts and safe destination handovers.',
+    },
+  },
+
+  /** 11. FOOTER SECTION */
+  footer: {
+    section: {
+      id: 'tui-footer',
+      title: 'Connect with us today for seamless logistics support!',
+      subTitle: 'Freight Forwarding Solutions',
+      stackElement: 'footer',
+      stackClass: 'bg-[#1b4332] text-white py-16',
+    },
+    content: {
+      title: 'GET IN TOUCH NOW',
+      description: '© TUI Logistics Indonesia. All Rights Reserved.',
+      descriptionIntro:
+        'Jl. Logistik Utama No. 46, Kawasan Industri Tanjung Priok, Jakarta Utara, Indonesia',
+      descriptionOutro:
+        'Email: support@tuilogistics.co.id | Phone: +62 21-5555-6789',
+    },
+    detail: {
+      descriptionIntro: 'Address: Jl. Padang No. 5A, Kel, Pasar Manggis',
+      descriptionOutro: 'Kec. Setiabudi Jakarta Selatan, Indonesia',
+    },
+  },
+};
+// test
+
+
+
+
+   card: {
+      title: 'Tailored logistics to enhance your efficiency',
+      subTitle: 'Simplifying your shipping experience',
+      descriptionIntro:
+        'At our company, we specialize in providing [streamlined logistics solutions] tailored to meet your specific business needs. Our expert team ensures that every shipment is handled with precision and care.',
+      descriptionOutro:
+        'We understand the complexities of freight forwarding and strive to simplify the process for you. By leveraging our extensive network and innovative technologies, we guarantee timely and efficient delivery of your goods, allowing you to focus on growing your business.',
+    },
+    img: tailoredImg,
