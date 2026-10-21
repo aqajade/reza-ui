@@ -1,43 +1,22 @@
-import type { StaticImageData } from 'next/image';
+export type LandingPageSectionId =
+  | 'hero'
+  | 'tailored'
+  | 'expertise'
+  | 'tracking'
+  | 'network'
+  | 'eco'
+  | 'services'
+  | 'process'
+  | 'explore'
+  | 'team'
+  | 'footer';
 
-type HeroSectionConfig = {
-  id: string;
-  type: 'hero';
-  title: string;
-  description: string;
-  imageSrc: string | StaticImageData;
-  imageAlt: string;
+export type LandingPageSectionConfig = {
+  id: LandingPageSectionId;
+  enabled?: boolean;
+  className?: string;
 };
 
-type ServicesSectionConfig = {
-  id: string;
-  type: 'services';
-  title: string;
-  items: {
-    id: string;
-    title: string;
-    description: string;
-    imageSrc: string | StaticImageData;
-    imageAlt: string;
-  }[];
-};
-
-type TestimonialsSectionConfig = {
-  id: string;
-  type: 'testimonials';
-  title: string;
-  items: {
-    id: string;
-    quote: string;
-    author: string;
-  }[];
-};
-
-export type PageSectionConfig =
-  | HeroSectionConfig
-  | ServicesSectionConfig
-  | TestimonialsSectionConfig;
-
-export type PageConfig = {
-  sections: PageSectionConfig[];
+export type LandingPageConfig = {
+  sections: LandingPageSectionConfig[];
 };
