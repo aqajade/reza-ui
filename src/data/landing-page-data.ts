@@ -1,4 +1,4 @@
-// src/config/page-data.ts
+// src/data/landing-page-data.ts
 import ecoImg from '@/../public/images/eco/ecoo.png';
 import expertiseImg from '@/../public/images/expertise/expertisee.png';
 import exploreImg from '@/../public/images/explore/exploree.png';

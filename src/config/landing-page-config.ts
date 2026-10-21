@@ -1,3 +1,4 @@
+// src/config/landing-page-config.ts 
 
 import type { LandingPageConfig } from '@/types/layout/page-schema';
 
