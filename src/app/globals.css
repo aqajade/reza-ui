@@ -11,8 +11,8 @@
   --section-py-mobile: 2.5rem;
   --section-py-desktop: 5rem;
   /* horizontal padding token */ 
-  --container-px-mobile: 1.1875rem; /* 19px */
-  --container-px-desktop: 8.0625rem; /* 129px */
+  --container-px-mobile: 1rem; /* 16px */
+  --container-px-desktop: 7.5rem; /* 120px */
   
   /* bg */
   --primary-100: #c8f1e4;

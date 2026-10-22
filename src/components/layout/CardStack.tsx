@@ -1,26 +1,23 @@
-// src/components/layout/CardStack.tsx
+import * as React from 'react';
 
 import { cn } from '@/lib/utils';
 import type { LayoutConfig } from '@/types/layout/base';
 
-import { StackLayout, type StackLayoutProps } from './StackLayout';
+import { StackLayout } from './StackLayout';
 
-type CardStackProps = Omit<StackLayoutProps, 'as'> & {
+// Pola seragam untuk SectionStack / ContentStack / DetailStack / CardStack:
+type StackProps = React.ComponentProps<typeof StackLayout> & {
   config?: LayoutConfig;
 };
 
-export function CardStack({
-  config,
-  className,
-  children,
-  ...props
-}: CardStackProps) {
-  const { containerClass, ...restConfig } = config || {};
+export function CardStack({ config, className, children, ...props }: StackProps) {
+  const { stackDirection, stackClass } = config || {};
 
   return (
     <StackLayout
-      className={cn(containerClass, className)}
-      {...restConfig}
+      stackDirection={stackDirection}
+      stackClass={stackClass}
+      className={cn('card-stack', className)}
       {...props}
     >
       {children}

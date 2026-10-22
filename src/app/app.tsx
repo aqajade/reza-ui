@@ -1,10 +1,10 @@
 import { PageRenderer } from '@/components/renderer/PageRenderer';
-import { landingPageConfig } from '@/config/landing-page';
+import { landingPage } from '@/compositions/landing-page';
 
 export default function App() {
   return (
     <main className='font-inter'>
-      <PageRenderer config={landingPageConfig} />
+      <PageRenderer page={landingPage} />
     </main>
   );
 }

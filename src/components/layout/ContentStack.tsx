@@ -1,23 +1,23 @@
+import * as React from 'react';
+
 import { cn } from '@/lib/utils';
-import { LayoutConfig } from '@/types/layout/base';
+import type { LayoutConfig } from '@/types/layout/base';
 
-import { StackLayout, type StackLayoutProps } from './StackLayout';
+import { StackLayout } from './StackLayout';
 
-type ContentStackProps = Omit<StackLayoutProps, 'as'> & {
+// Pola seragam untuk SectionStack / ContentStack / DetailStack / CardStack:
+type StackProps = React.ComponentProps<typeof StackLayout> & {
   config?: LayoutConfig;
 };
 
-export function ContentStack({
-  config,
-  className,
-  children,
-  ...props
-}: ContentStackProps) {
-  const { containerClass, ...restConfig } = config || {};
+export function ContentStack({ config, className, children, ...props }: StackProps) {
+  const { stackDirection, stackClass } = config || {};
+
   return (
     <StackLayout
-      className={cn(containerClass, className)}
-      {...restConfig}
+      stackDirection={stackDirection}
+      stackClass={stackClass}
+      className={cn('content-stack', className)}
       {...props}
     >
       {children}

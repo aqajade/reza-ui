@@ -1,33 +1,35 @@
-// src/components/layout/PageSection.tsx
 import * as React from 'react';
 
-import { cn } from '@/lib/utils'; // Fungsi gabungan sakti bawaan Shadcn UI
+import { cn } from '@/lib/utils';
+import type { SectionConfig, SectionElement } from '@/types/layout/base';
 
-/**
- * 1. DEFINISI TIPE PROPS (BIP MODERN USING TYPE)
- * Menggabungkan properti bawaan dari tag HTML <section> asli
- * dengan properti kustom 'as' agar tag elemennya bisa fleksibel berubah.
- */
 type PageSectionProps = React.ComponentProps<'section'> & {
-  /** Mengizinkan komponen menyamar menjadi tag HTML lain (contoh: as="header" atau as="footer") */
-  as?: React.ElementType;
-    /** 🟢 BARU & BIP: Menyerap langsung string kelas kustom penjinak visual sekat luar dari Excel */
+  config?: SectionConfig;
+  sectionElement?: SectionElement;
   sectionClass?: string;
 };
 
-/**
- * 2. KOMPONEN UTAMA PAGESECTION (PASCALCASE)
- */
 export function PageSection({
-  className, sectionClass,
-  as: Component = 'section', // Jika di spreadsheet tidak diisi kustom, otomatis pakai <section> bawaan pabrik
-  ...props // Menampung sisa properti otomatis seperti id, onClick, aria-labels, dll.
+  config,
+  sectionElement,
+  sectionClass,
+  className,
+  children,
+  ...props
 }: PageSectionProps) {
+  const Component = (sectionElement ||
+    config?.layout.sectionElement ||
+    'section') as React.ElementType;
+  const resolvedClass = sectionClass || config?.layout.sectionClass;
+  const resolvedId = props.id || config?.layout.id;
+
   return (
     <Component
-      // 'page-section' adalah hukum dasar SSOT dari globals.css kamu yang mengatur padding vertikal
-      className={cn('page-section',sectionClass, className)}
+      id={resolvedId}
+      className={cn('page-section', resolvedClass, className)}
       {...props}
-    />
+    >
+      {children}
+    </Component>
   );
 }

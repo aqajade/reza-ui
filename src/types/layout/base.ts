@@ -1,24 +1,28 @@
 // src/types/layout/page-config.ts
 import type { StaticImageData } from 'next/image';
 
+export type SectionElement = 'section' | 'header' | 'footer' | 'aside' | 'main';
 
-export type StackElement = 'section' | 'header' | 'footer'
+export type SectionConfig = BaseLayoutConfig & {
+  layout: {
+    id?: string;
+    sectionElement?: SectionElement;
+    sectionClass?: string;
+    containerClass?: string;
+  };
+};
 
 export type BaseLayoutConfig = {
-  layout: LayoutConfig;
+  layout?: LayoutConfig;
   header?: HeaderConfig;
   image?: RawImageConfig;
 };
 
 export type LayoutConfig = {
-  id?: string;
-  stackElement?: StackElement
+  id?: string; //id superoptional u/ case animation aja
   stackDirection?: 'col' | 'row';
   stackClass?: string;
-  containerClass?: string;
 };
-
-
 
 export type HeaderConfig = {
   headerClass?: string;
@@ -76,11 +80,14 @@ export type ImageConfig = {
 };
 
 // konfigurasi tanpa gambar
-export type SectionConfig = BaseLayoutConfig & {
-  layout:{
-    id: string;
-  }
-};
+
+// export type SectionConfig = BaseLayoutConfig & {
+//   layout: {
+//     id?: string;
+//     sectionElement?: SectionElement; // 🟢 Di sini tempatnya!
+//     sectionClass?: string;
+//   };
+// };
 
 // konfigurasi dengan gambar
 // export type ImagedSectionConfig = SectionConfig & {

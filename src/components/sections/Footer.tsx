@@ -6,11 +6,13 @@ import { PageSection } from '@/components/layout/PageSection';
 import { SectionHeader } from '@/components/layout/SectionHeader';
 import { landingPageData } from '@/data/landing-page';
 import { cn } from '@/lib/utils';
+import type { LandingPageData } from '@/types/layout/landing-page';
 
 import { ContentStack } from '../layout/ContentStack';
 import { SectionStack } from '../layout/SectionStack';
 //props cN definition
 type FooterProps = {
+  data: LandingPageData['footer'];
   className?: string;
 };
 export function Footer({ className }: FooterProps) {
@@ -19,7 +21,11 @@ export function Footer({ className }: FooterProps) {
 
   return (
     // <PageSection id={section.layout.id} sectionClass={section.layout.sectionClass}>
-    <PageSection id={section.layout.id} className={cn('', className)}>
+    <PageSection
+      id={section.layout.id}
+      sectionElement='footer'
+      className={cn('', className)}
+    >
       <CustomContainer>
         <SectionStack config={section.layout}>
           <SectionHeader config={section.header} />

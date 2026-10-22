@@ -15,6 +15,7 @@ import type {
   SectionConfig,
 } from './base';
 import { GridConfig } from './grid-config';
+import { LandingPageConfig } from './page-schema';
 
 type FeatureCardConfig = HeaderConfig & {
   title: string;
@@ -35,12 +36,23 @@ type DataConfig = HeaderConfig & {
  */
 export type LandingPageData = {
   header: {
-    section: BaseLayoutConfig & {
+    section: SectionConfig & {
       layout: LayoutConfig & {
         stackElement: 'header';
       };
     };
   };
+
+  // header: {
+  //   section: BaseLayoutConfig & {
+  //     section: SectionConfig & {
+  //       sectionElement: 'header'; // 🟢 Semantik tag pindah ke section!
+  //     };
+  //     layout: LayoutConfig & {
+  //       stackElement: 'header';
+  //     };
+  //   };
+  // };
 
   hero: {
     section: BaseLayoutConfig & {
@@ -151,11 +163,25 @@ export type LandingPageData = {
     // card: BaseLayoutConfig;
   };
 
+  // hero: {
+  //   section: BaseLayoutConfig & {
+  //     header: HeaderConfig & {
+  //       title: string;
+  //       subTitle: string;
+  //       description: string;
+  //     };
+  //     image: RawImageConfig;
+  //   };
+  //   content: LayoutConfig & {
+  //     image: RawImageConfig;
+  //   };
+  // };
+
   // /** 11. Footer Section: Area CTA Hubungi Kami, Kredit Hak Cipta, dan Detail Alamat Kontak */
   footer: {
     section: SectionConfig & {
       layout: LayoutConfig & {
-        stackElement: 'footer';
+        sectionElement: 'footer';
       };
       header: HeaderConfig & {
         title: string;
@@ -177,4 +203,21 @@ export type LandingPageData = {
       };
     };
   };
+
+  test: {
+    section: SectionConfig & {
+      layout:{
+        sectionElement:'header'
+        containerClass:string
+        stackClass:string
+      }
+    };
+  };
+
+};
+
+// Gabungan SSOT untuk halaman lengkap:
+export type LandingPage = {
+  config: LandingPageConfig;
+  data: LandingPageData;
 };

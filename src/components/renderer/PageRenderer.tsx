@@ -11,16 +11,19 @@ import { Services } from '@/components/sections/Services';
 import { Tailored } from '@/components/sections/Tailored';
 import { Team } from '@/components/sections/Team';
 import { Tracking } from '@/components/sections/Tracking';
-import type {
-  LandingPageConfig,
-  LandingPageSectionId,
-} from '@/types/layout/page-schema';
+import type { LandingPage, LandingPageData } from '@/types/layout/landing-page';
+import type { LandingPageSectionId } from '@/types/layout/page-schema';
 
-type SectionProps = {
+// Definisi props standar yang diterima oleh setiap Section Component
+export type SectionComponentProps<T = unknown> = {
+  data: T;
   className?: string;
 };
 
-const sectionRegistry = {
+// Mapping registry yang Type-Safe untuk setiap Section
+const sectionRegistry: {
+  [K in LandingPageSectionId]: ComponentType<SectionComponentProps<LandingPageData[K]>>;
+} = {
   hero: Hero,
   tailored: Tailored,
   expertise: Expertise,
@@ -32,13 +35,15 @@ const sectionRegistry = {
   explore: Explore,
   team: Team,
   footer: Footer,
-} satisfies Record<LandingPageSectionId, ComponentType<SectionProps>>;
-
-type PageRendererProps = {
-  config: LandingPageConfig;
 };
 
-export function PageRenderer({ config }: PageRendererProps) {
+type PageRendererProps = {
+  page: LandingPage;
+};
+
+export function PageRenderer({ page }: PageRendererProps) {
+  const { config, data } = page;
+
   return (
     <>
       {config.sections.map((section) => {
@@ -46,9 +51,26 @@ export function PageRenderer({ config }: PageRendererProps) {
           return null;
         }
 
-        const Section = sectionRegistry[section.id];
+        // Ambil komponen dari registry berdasarkan section.id
+        const SectionComponent = sectionRegistry[section.id] as ComponentType<
+          SectionComponentProps<unknown>
+        >;
 
-        return <Section key={section.id} className={section.className} />;
+        if (!SectionComponent) {
+          console.warn(`Section with id "${section.id}" not found in registry.`);
+          return null;
+        }
+
+        // Ambil data payload spesifik untuk section ini
+        const sectionData = data[section.id];
+
+        return (
+          <SectionComponent
+            key={section.id}
+            data={sectionData}
+            className={section.className}
+          />
+        );
       })}
     </>
   );

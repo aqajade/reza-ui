@@ -10,7 +10,6 @@ import tailoredImg from '@/../public/images/tailored/tailoredd.png';
 import teamImg from '@/../public/images/team/team.png';
 import trackingImg from '@/../public/images/tracking/trackingg.png';
 import { LandingPageData } from '@/types/layout/landing-page';
-import { LandingPageConfig } from '@/types/layout/page-schema';
 // import { RawImageConfig } from '@/types/layout/page-config';
 export const landingPageData: LandingPageData = {
   header: {
@@ -418,7 +417,7 @@ export const landingPageData: LandingPageData = {
         alt: 'TUI Logistik Cargo Ship Illustration',
         minWidth: 360,
         maxWidth: 1100,
-        aspectRatio:'3/1.8',
+        aspectRatio: '3/1.8',
         containerClass: 'mx-auto',
         elementClass: 'scale-100',
         loading: 'eager',
@@ -432,7 +431,7 @@ export const landingPageData: LandingPageData = {
     section: {
       layout: {
         id: 'footer',
-        stackElement: 'footer', //
+        sectionElement: 'footer', //
         stackClass:
           'gap-[clamp(60px,14.9570px+11.4613vw,180px)] text-primary-400',
       },
@@ -457,8 +456,7 @@ export const landingPageData: LandingPageData = {
         headerClass: 'text-left',
         title: 'GET IN TOUCH NOW',
         //  8
-        titleClass:
-          'text-[clamp(22px,20.4986px+0.3820vw,26px)] font-bold pb-2',
+        titleClass: 'text-[clamp(22px,20.4986px+0.3820vw,26px)] font-bold pb-2',
         descriptionIntro: 'Phone: +62 21 8285 0201',
         description: 'Mobile (WhatsApp): +62 877 8787 3352',
         descriptionOutro: 'Email: sales@tuilogis.com',
@@ -472,32 +470,16 @@ export const landingPageData: LandingPageData = {
       },
     },
   },
-  // footer: {
-  //   section: {
-  //     id: 'tui-footer',
-  //     title: 'Connect with us today for seamless logistics support!',
-  //     subTitle: 'Freight Forwarding Solutions',
-  //     stackElement: 'footer',
-  //     stackClass: 'bg-[#1b4332] text-white py-16',
-  //   },
-  //   content: {
-  //     title: 'GET IN TOUCH NOW',
-  //     description: '© TUI Logistics Indonesia. All Rights Reserved.',
-  //     descriptionIntro:
-  //       'Jl. Logistik Utama No. 46, Kawasan Industri Tanjung Priok, Jakarta Utara, Indonesia',
-  //     descriptionOutro:
-  //       'Email: support@tuilogistics.co.id | Phone: +62 21-5555-6789',
-  //   },
-  //   detail: {
-  //     descriptionIntro: 'Address: Jl. Padang No. 5A, Kel, Pasar Manggis',
-  //     descriptionOutro: 'Kec. Setiabudi Jakarta Selatan, Indonesia',
-  //   },
-  // },
-};
-// test
-
-// Tipe gabungan untuk satu halaman lengkap.
-export type LandingPage = {
-  config: LandingPageConfig;
-  data: LandingPageData;
+  // /** 13. TEST  SECTION */ta
+  test: {
+    section: {
+      layout: {
+        id: 'fittest',
+        sectionElement: 'header',
+        stackClass:
+          'gap-[clamp(60px,14.9570px+11.4613vw,180px)] text-primary-400',
+        containerClass: 'bg-blue',
+      },
+    },
+  },
 };

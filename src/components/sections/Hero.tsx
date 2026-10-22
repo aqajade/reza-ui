@@ -1,6 +1,6 @@
 import { SectionHeader } from '@/components/layout/SectionHeader';
-import { landingPageData } from '@/data/landing-page';
 import { cn } from '@/lib/utils';
+import type { LandingPageData } from '@/types/layout/landing-page';
 
 import { ContentStack } from '../layout/ContentStack';
 import { CustomContainer } from '../layout/CustomContainer';
@@ -10,10 +10,11 @@ import { PageSection } from '../layout/PageSection';
 import { SectionStack } from '../layout/SectionStack';
 //props cN definition
 type HeroProps = {
+  data: LandingPageData['hero'];
   className?: string;
 };
-export function Hero({ className }: HeroProps) {
-  const { section, content } = landingPageData.hero;
+export function Hero({ data, className }: HeroProps) {
+  const { section, content } = data; // 🟢 Bersih, diambil dari props
   return (
     // <SectionStack id={section.id} stackClass={section.stackClass}>
     <PageSection
