@@ -3,7 +3,7 @@
 // 🟢 KUNCI SAKTI BIP: Static Image Import agar VS Code auto-detect super lancar!
 import { CustomContainer } from '@/components/layout/CustomContainer';
 import { PageSection } from '@/components/layout/PageSection';
-import { landingPageData } from '@/data/landing-page-data';
+import { landingPageData } from '@/data/landing-page';
 import { cn } from '@/lib/utils';
 
 import { CardStack } from '../layout/CardStack';
@@ -17,11 +17,11 @@ type NetworkProps = {
 export function Network({ className }: NetworkProps) {
   const { section } = landingPageData.network;
   return (
-    <PageSection id={section.layout.id} className={cn('', className)} >
+    <PageSection id={section.layout.id} className={cn('', className)}>
       <CustomContainer className=''>
         <SectionStack
           className={cn(
-            'gap-[clamp(24px,11.9885px+3.0564vw,56px)]'// Responsive: Otomatis tumpuk vertikal di layar HP
+            'gap-[clamp(24px,11.9885px+3.0564vw,56px)]' // Responsive: Otomatis tumpuk vertikal di layar HP
           )}
         >
           {/* img & card */}

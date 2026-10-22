@@ -33,7 +33,7 @@ type DataConfig = HeaderConfig & {
  * 4. MAIN LANDINGPAGE BLUEPRINT (The Single Source of Truth / SSOT TUI Logistik)
  * ==========================================================================
  */
-export type LandingPageConfig = {
+export type LandingPage = {
   header: {
     section: BaseLayoutConfig & {
       layout: LayoutConfig & {

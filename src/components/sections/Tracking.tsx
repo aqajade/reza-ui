@@ -3,7 +3,7 @@
 // 🟢 KUNCI SAKTI BIP: Static Image Import agar VS Code auto-detect super lancar!
 import { CustomContainer } from '@/components/layout/CustomContainer';
 import { PageSection } from '@/components/layout/PageSection';
-import { landingPageData } from '@/data/landing-page-data';
+import { landingPageData } from '@/data/landing-page';
 import { cn } from '@/lib/utils';
 
 import { CardStack } from '../layout/CardStack';

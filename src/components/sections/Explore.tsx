@@ -4,7 +4,7 @@
 import { CustomContainer } from '@/components/layout/CustomContainer';
 import { PageSection } from '@/components/layout/PageSection';
 import { SectionHeader } from '@/components/layout/SectionHeader';
-import { landingPageData } from '@/data/landing-page-data';
+import { landingPageData } from '@/data/landing-page';
 import { cn } from '@/lib/utils';
 
 import { CardStack } from '../layout/CardStack';
