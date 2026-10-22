@@ -9,9 +9,10 @@ import processImg from '@/../public/images/process/processs.png';
 import tailoredImg from '@/../public/images/tailored/tailoredd.png';
 import teamImg from '@/../public/images/team/team.png';
 import trackingImg from '@/../public/images/tracking/trackingg.png';
-import { LandingPage } from '@/types/layout/landing-page';
+import { LandingPageData } from '@/types/layout/landing-page';
+import { LandingPageConfig } from '@/types/layout/page-schema';
 // import { RawImageConfig } from '@/types/layout/page-config';
-export const landingPageData: LandingPage = {
+export const landingPageData: LandingPageData = {
   header: {
     section: {
       layout: {
@@ -494,3 +495,9 @@ export const landingPageData: LandingPage = {
   // },
 };
 // test
+
+// Tipe gabungan untuk satu halaman lengkap.
+export type LandingPage = {
+  config: LandingPageConfig;
+  data: LandingPageData;
+};
