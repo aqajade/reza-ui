@@ -7,14 +7,14 @@
  */
 
 // import type { GridConfig } from './grid-config';
-import { GridConfig } from './grid-config';
 import type {
   BaseLayoutConfig,
   HeaderConfig,
   LayoutConfig,
   RawImageConfig,
   SectionConfig,
-} from './page-config';
+} from './base';
+import { GridConfig } from './grid-config';
 
 type FeatureCardConfig = HeaderConfig & {
   title: string;
@@ -139,7 +139,7 @@ export type LandingPageConfig = {
       image: RawImageConfig;
     };
   };
-  
+
   // /** 11 team
   team: {
     section: SectionConfig & {
@@ -155,8 +155,8 @@ export type LandingPageConfig = {
   footer: {
     section: SectionConfig & {
       layout: LayoutConfig & {
-        stackElement: 'footer'
-      }
+        stackElement: 'footer';
+      };
       header: HeaderConfig & {
         title: string;
         subTitle: string;

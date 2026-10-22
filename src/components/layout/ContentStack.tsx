@@ -1,5 +1,5 @@
 import { cn } from '@/lib/utils';
-import { LayoutConfig } from '@/types/layout/page-config';
+import { LayoutConfig } from '@/types/layout/base';
 
 import { StackLayout, type StackLayoutProps } from './StackLayout';
 

@@ -1,6 +1,5 @@
 // import { StaticImageData } from 'next/image';
 
-
 // import { ImageConfig } from '@/types/image';
 
 // interface FluidImageParams {
@@ -78,7 +77,7 @@
 // // if (typeof src === 'object' && src && 'width' in src && 'height' in src) {
 // //   aspectRatioStyle = `${src.width} / ${src.height}`; // Tetap otomatis jika gambar lokal
 // // }
-  
+
 //   return {
 //     src,
 //     alt,
@@ -107,9 +106,8 @@
 
 // ==========================================
 
-
 // src/lib/fluid-image.ts
-import { ImageConfig, RawImageConfig } from "@/types/layout/page-config";
+import { ImageConfig, RawImageConfig } from '@/types/layout/base';
 
 // bip: Menggunakan type alias dengan Omit & Intersection untuk modifikasi prop
 export type FluidImageParams = Omit<RawImageConfig, 'minWidth' | 'maxWidth'> & {
@@ -144,17 +142,23 @@ export function createFluidImageConfig({
   //   aspectRatioStyle = `${src.width} / ${src.height}`; // Tetap otomatis jika gambar lokal
   // }
 
-    // 🟢 PRIORITAS 1: Gunakan aspectRatio dari data jika ada (misal '1/1')
+  // 🟢 PRIORITAS 1: Gunakan aspectRatio dari data jika ada (misal '1/1')
   // JIKA TIDAK ADA di data, barulah hitung otomatis dari ukuran asli gambar lokal
   let aspectRatioStyle = aspectRatio;
-  if (!aspectRatioStyle && typeof src === 'object' && src && 'width' in src && 'height' in src) {
+  if (
+    !aspectRatioStyle &&
+    typeof src === 'object' &&
+    src &&
+    'width' in src &&
+    'height' in src
+  ) {
     aspectRatioStyle = `${src.width} / ${src.height}`;
   }
   // Fallback terakhir jika dua-duanya tidak ada
   if (!aspectRatioStyle) {
     aspectRatioStyle = '16 / 9';
   }
-  
+
   return {
     src,
     alt,
@@ -164,9 +168,9 @@ export function createFluidImageConfig({
     containerClass,
     elementClass: `object-cover ${elementClass}`,
     // bip: Gabungkan clamp width dan aspek rasio otomatis ke inline style kontainer
-    containerStyle: { 
+    containerStyle: {
       width: clampStyle,
-      aspectRatio: aspectRatioStyle
+      aspectRatio: aspectRatioStyle,
     },
   };
 }
@@ -187,4 +191,3 @@ export function parseRawImage(raw: RawImageConfig): ImageConfig {
     aspectRatio: raw.aspectRatio, // bip: wajib di-forward agar terbaca oleh createFluidImageConfig
   });
 }
-

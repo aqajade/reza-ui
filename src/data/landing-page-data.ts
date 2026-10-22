@@ -9,7 +9,7 @@ import processImg from '@/../public/images/process/processs.png';
 import tailoredImg from '@/../public/images/tailored/tailoredd.png';
 import teamImg from '@/../public/images/team/team.png';
 import trackingImg from '@/../public/images/tracking/trackingg.png';
-import { LandingPageConfig } from '@/types/layout/landing-page-config';
+import { LandingPageConfig } from '@/types/layout/landing-page';
 // import { RawImageConfig } from '@/types/layout/page-config';
 export const landingPageData: LandingPageConfig = {
   header: {

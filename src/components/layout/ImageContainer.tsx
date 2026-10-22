@@ -107,7 +107,7 @@ import * as React from 'react';
 
 import { parseRawImage } from '@/lib/fluid-image';
 import { cn } from '@/lib/utils';
-import { ImageConfig, RawImageConfig } from '@/types/layout/page-config';
+import { ImageConfig, RawImageConfig } from '@/types/layout/base';
 
 type ImageContainerProps = React.ComponentProps<'div'> & {
   // Mengizinkan komponen menerima data mentah (RawImageConfig) atau yang sudah dikonversi (ImageConfig)
@@ -145,7 +145,7 @@ export function ImageContainer({
 
   if (!src) return null;
 
-    // 🟢 KUNCI BIP: Cek apakah user memasang class w-full / w-[...] secara sengaja
+  // 🟢 KUNCI BIP: Cek apakah user memasang class w-full / w-[...] secara sengaja
   const combinedClasses = cn(containerClass, className);
   const hasCustomWidth = /\bw-(full|\d+|\[.*?\])/.test(combinedClasses);
   // Jika ada w-full / w- kustom, hapus properti `width: clamp` bawaan fluid helper!
@@ -158,7 +158,7 @@ export function ImageContainer({
   return (
     <div
       className={cn(
-        'relative block overflow-hidden max-w-full',
+        'relative block max-w-full overflow-hidden',
         containerClass,
         className
       )}

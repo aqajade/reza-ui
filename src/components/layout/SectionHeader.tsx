@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { parseHighlightText } from '@/lib/text-parser';
 import { cn } from '@/lib/utils';
-import type { HeaderConfig } from '@/types/layout/page-config';
+import type { HeaderConfig } from '@/types/layout/base';
 
 type SectionHeaderProps = React.ComponentProps<'div'> & {
   config: HeaderConfig;
