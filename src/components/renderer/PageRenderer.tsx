@@ -1,16 +1,16 @@
 import type { ComponentType } from 'react';
 
-import { Eco } from '@/components/sections/Eco';
-import { Expertise } from '@/components/sections/Expertise';
-import { Explore } from '@/components/sections/Explore';
-import { Footer } from '@/components/sections/Footer';
-import { Hero } from '@/components/sections/Hero';
-import { Network } from '@/components/sections/Network';
-import { Process } from '@/components/sections/Process';
-import { Services } from '@/components/sections/Services';
-import { Tailored } from '@/components/sections/Tailored';
-import { Team } from '@/components/sections/Team';
-import { Tracking } from '@/components/sections/Tracking';
+// import { Eco } from '@/components/sections/Eco';
+// import { Expertise } from '@/components/sections/Expertise';
+// import { Explore } from '@/components/sections/Explore';
+// import { Footer } from '@/components/sections/Footer';
+// import { Hero } from '@/components/sections/Hero';
+// import { Network } from '@/components/sections/Network';
+// import { Process } from '@/components/sections/Process';
+// import { Services } from '@/components/sections/Services';
+// import { Tailored } from '@/components/sections/Tailored';
+// import { Team } from '@/components/sections/Team';
+// import { Tracking } from '@/components/sections/Tracking';
 import type { LandingPage, LandingPageData } from '@/types/layout/landing-page';
 import type { LandingPageSectionId } from '@/types/layout/page-schema';
 

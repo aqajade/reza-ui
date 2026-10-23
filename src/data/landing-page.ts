@@ -12,6 +12,8 @@ import trackingImg from '@/../public/images/tracking/trackingg.png';
 import { LandingPageData } from '@/types/layout/landing-page';
 // import { RawImageConfig } from '@/types/layout/page-config';
 export const landingPageData: LandingPageData = {
+  landingItqanMath: {},
+
   header: {
     section: {
       layout: {

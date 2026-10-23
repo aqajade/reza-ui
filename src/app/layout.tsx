@@ -18,8 +18,8 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: 'TUI Logistik Indonesia',
-  description: 'Reliable and Efficient Freight Forwarding Services',
+  title: 'Itqan Math',
+  description: "May Allah forgive me and all Muslimin, and help me to always keep this legacy ikhlas purely Lillahi Robbil 'Alamin",
 };
 
 export default function RootLayout({ children }: LayoutProps<'/'>) {

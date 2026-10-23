@@ -35,6 +35,8 @@ type DataConfig = HeaderConfig & {
  * ==========================================================================
  */
 export type LandingPageData = {
+  landingItqanMath: Record<string, never>;
+
   header: {
     section: SectionConfig & {
       layout: LayoutConfig & {
