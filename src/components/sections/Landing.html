@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="id" class="dark h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ItqanMath - Generator Penjumlahan Dasar</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        islamic: {
+                            950: '#030D0A',
+                            900: '#061A14',
+                            800: '#0B2B22',
+                            700: '#123D31',
+                            600: '#0D5240',
+                            500: '#10B981',
+                            400: '#34D399',
+                            300: '#6EE7B7',
+                            gold: '#D4AF37',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        .bg-islamic-pattern {
+            background-color: #030D0A;
+            background-image: radial-gradient(#10b981 0.5px, transparent 0.5px), radial-gradient(#10b981 0.5px, #030D0A 0.5px);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+        }
+        .glass-card {
+            background: rgba(11, 43, 34, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(18, 61, 49, 0.9);
+        }
+    </style>
+</head>
+<body class="bg-[#030D0A] text-gray-100 font-sans antialiased h-screen w-screen overflow-hidden flex flex-col justify-between bg-islamic-pattern selection:bg-islamic-500 selection:text-white relative p-2 sm:p-4">
+
+    <!-- Compact Header Section -->
+    <header class="w-full max-w-md mx-auto flex-shrink-0 mb-2">
+        <div class="glass-card rounded-xl px-3 py-2 flex items-center justify-between border border-islamic-700/80 shadow-md">
+            <div class="flex items-center space-x-2">
+                <div class="w-8 h-8 rounded-lg bg-islamic-800 border border-islamic-500/40 flex items-center justify-center p-1 shadow-inner flex-shrink-0">
+                    <img class="" src="./logo-white.svg" alt="">
+                </div>
+                <div>
+                    <span class="text-base font-extrabold tracking-tight text-white leading-none block">Itqan<span class="text-islamic-400">Math</span></span>
+                    <span class="text-[9px] text-islamic-300/80 uppercase font-medium tracking-wider">Modul 01: Penjumlahan</span>
+                </div>
+            </div>
+
+            <span class="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-islamic-500/10 border border-islamic-500/30 text-islamic-300 text-[10px] font-semibold">
+                <span class="h-1.5 w-1.5 rounded-full bg-islamic-400 animate-pulse"></span>
+                <span>Fase Fondasi</span>
+            </span>
+        </div>
+    </header>
+
+    <!-- Main Content Container (Clean & Simple Setup) -->
+    <main class="w-full max-w-md mx-auto flex-1 flex flex-col min-h-0 justify-center my-auto">
+        <div class="glass-card rounded-2xl p-4 sm:p-5 border border-islamic-500/30 flex flex-col justify-between shadow-2xl space-y-4">
+            
+            <!-- Badge & Judul Topik Utama -->
+            <div class="text-center space-y-1">
+                <div class="inline-flex items-center justify-center p-2 rounded-xl bg-islamic-500/10 text-islamic-400 border border-islamic-500/20 mb-1">
+                    <i class="fa-solid fa-plus text-xl sm:text-2xl"></i>
+                </div>
+                <h1 class="text-lg sm:text-xl font-extrabold text-white tracking-wide">Latihan Penjumlahan</h1>
+                <p class="text-xs text-gray-300">Bangun ketelitian dan kecepatan berhitung dasar secara bertahap.</p>
+            </div>
+
+            <form id="generator-form" onsubmit="startLatihan(event)" class="space-y-4 pt-2">
+                
+                <!-- Parameter 1: Total Soal -->
+                <div>
+                    <label class="block text-xs font-bold text-gray-200 mb-1.5 flex items-center justify-between">
+                        <span class="flex items-center gap-1.5">
+                            <i class="fa-solid fa-list-check text-islamic-400 text-xs"></i>
+                            <span>Total Soal</span>
+                        </span>
+                        <span class="text-[10px] text-islamic-300/80 font-normal">Pilih jumlah</span>
+                    </label>
+                    <div class="grid grid-cols-4 gap-2" id="total-selector">
+                        <button type="button" onclick="selectTotal(5, this)" class="total-btn py-2 rounded-lg bg-islamic-950 border border-islamic-800 text-gray-300 hover:text-white font-bold text-xs transition-all text-center">
+                            5
+                        </button>
+                        <button type="button" onclick="selectTotal(10, this)" class="total-btn active py-2 rounded-lg bg-islamic-500 border border-islamic-400 text-white font-extrabold text-xs transition-all text-center shadow-lg shadow-islamic-500/20">
+                            10
+                        </button>
+                        <button type="button" onclick="selectTotal(15, this)" class="total-btn py-2 rounded-lg bg-islamic-950 border border-islamic-800 text-gray-300 hover:text-white font-semibold text-xs transition-all text-center">
+                            15
+                        </button>
+                        <button type="button" onclick="selectTotal(20, this)" class="total-btn py-2 rounded-lg bg-islamic-950 border border-islamic-800 text-gray-300 hover:text-white font-semibold text-xs transition-all text-center">
+                            20
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Parameter 2: Timer -->
+                <div>
+                    <label class="block text-xs font-bold text-gray-200 mb-1.5 flex items-center justify-between">
+                        <span class="flex items-center gap-1.5">
+                            <i class="fa-solid fa-stopwatch text-islamic-400 text-xs"></i>
+                            <span>Batas Waktu (Timer)</span>
+                        </span>
+                        <span class="text-[10px] text-islamic-300/80 font-normal">Opsional</span>
+                    </label>
+                    <div class="grid grid-cols-4 gap-2" id="timer-selector">
+                        <button type="button" onclick="selectTimer('off', this)" class="timer-btn active py-2 rounded-lg bg-islamic-500 border border-islamic-400 text-white font-extrabold text-xs transition-all text-center shadow-lg shadow-islamic-500/20">
+                            Santai
+                        </button>
+                        <button type="button" onclick="selectTimer('5', this)" class="timer-btn py-2 rounded-lg bg-islamic-950 border border-islamic-800 text-gray-300 hover:text-white font-semibold text-xs transition-all text-center">
+                            5 Mnt
+                        </button>
+                        <button type="button" onclick="selectTimer('10', this)" class="timer-btn py-2 rounded-lg bg-islamic-950 border border-islamic-800 text-gray-300 hover:text-white font-semibold text-xs transition-all text-center">
+                            10 Mnt
+                        </button>
+                        <button type="button" onclick="selectTimer('15', this)" class="timer-btn py-2 rounded-lg bg-islamic-950 border border-islamic-800 text-gray-300 hover:text-white font-semibold text-xs transition-all text-center">
+                            15 Mnt
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Action Button -->
+                <button type="submit" class="w-full py-3 bg-gradient-to-r from-islamic-500 via-emerald-500 to-teal-500 hover:from-islamic-400 hover:to-emerald-400 text-white font-extrabold rounded-xl text-xs sm:text-sm tracking-wide transition-all shadow-lg shadow-islamic-500/25 flex items-center justify-center gap-2 active:scale-[0.98] mt-2">
+                    <span>Mulai Latihan Penjumlahan</span>
+                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                </button>
+            </form>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full max-w-md mx-auto flex-shrink-0 mt-2 text-center">
+        <p class="text-[10px] text-gray-400">
+            &copy; 2026 ItqanMath • Belajar Bertahap Tanpa Iklan
+        </p>
+    </footer>
+
+    <!-- Interactive Script -->
+    <script>
+        let selectedTotal = 10;
+        let selectedTimer = 'off';
+
+        function selectTotal(value, btn) {
+            selectedTotal = value;
+            document.querySelectorAll('.total-btn').forEach(b => {
+                b.className = 'total-btn py-2 rounded-lg bg-islamic-950 border border-islamic-800 text-gray-300 hover:text-white font-semibold text-xs transition-all text-center';
+            });
+            btn.className = 'total-btn active py-2 rounded-lg bg-islamic-500 border border-islamic-400 text-white font-extrabold text-xs transition-all text-center shadow-lg shadow-islamic-500/20';
+        }
+
+        function selectTimer(value, btn) {
+            selectedTimer = value;
+            document.querySelectorAll('.timer-btn').forEach(b => {
+                b.className = 'timer-btn py-2 rounded-lg bg-islamic-950 border border-islamic-800 text-gray-300 hover:text-white font-semibold text-xs transition-all text-center';
+            });
+            btn.className = 'timer-btn active py-2 rounded-lg bg-islamic-500 border border-islamic-400 text-white font-extrabold text-xs transition-all text-center shadow-lg shadow-islamic-500/20';
+        }
+
+        function startLatihan(e) {
+            e.preventDefault();
+            const timerLabel = selectedTimer === 'off' ? 'Tanpa Waktu (Santai)' : `${selectedTimer} Menit`;
+
+            const toast = document.createElement('div');
+            toast.className = 'fixed inset-0 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 z-50';
+            toast.innerHTML = `
+                <div class="glass-card max-w-xs w-full p-5 rounded-2xl border border-islamic-400 text-center space-y-3">
+                    <div class="w-12 h-12 mx-auto rounded-full bg-islamic-500/20 text-islamic-400 flex items-center justify-center text-2xl">
+                        <i class="fa-solid fa-play"></i>
+                    </div>
+                    <h2 class="text-sm font-extrabold text-white">Bismillah! Latihan Siap</h2>
+                    <div class="text-[11px] text-gray-300 space-y-1 bg-islamic-950 p-3 rounded-xl border border-islamic-800 text-left">
+                        <p><span class="text-gray-400">Materi:</span> <strong class="text-white">Penjumlahan Dasar</strong></p>
+                        <p><span class="text-gray-400">Total Soal:</span> <strong class="text-white">${selectedTotal} Soal</strong></p>
+                        <p><span class="text-gray-400">Mode Timer:</span> <strong class="text-white">${timerLabel}</strong></p>
+                    </div>
+                    <button onclick="this.closest('.fixed').remove()" class="w-full py-2 bg-islamic-500 hover:bg-islamic-400 text-white font-bold rounded-lg text-xs transition-all shadow-md">
+                        Mulai Sekarang
+                    </button>
+                </div>
+            `;
+            document.body.appendChild(toast);
+        }
+    </script>
+</body>
+</html>
+
+<!-- 
+
+pesan utama nya ini, 
+**Tentang latihan ini**
+
+ItqanMath menyediakan latihan matematika gratis yang dapat digunakan secara bertahap.
+
+Saat ini tersedia latihan penjumlahan dengan soal berbentuk angka langsung dan jawaban isian singkat. Kombinasi angka dibuat secara acak, dengan hasil maksimal lima digit.
+
+**Pengembangan ItqanMath**
+
+Cakupan latihan saat ini masih terbatas dan dapat dikembangkan secara bertahap. Semoga Allah menjadikan platform ini bermanfaat bagi kaum muslimin.
+
+tolong amankan u/ tetap accessible satu viewport aja tanpa scroll dan bisa dirasakan manfaatnya u/ kaum muslimin ya
+
+-->

@@ -1,15 +1,15 @@
-export type LandingPageSectionId =
-  | 'hero'
-  | 'tailored'
-  | 'expertise'
-  | 'tracking'
-  | 'network'
-  | 'eco'
-  | 'services'
-  | 'process'
-  | 'explore'
-  | 'team'
-  | 'footer';
+export type LandingPageSectionId = 'landingItqanMath';
+// | 'hero'
+// | 'tailored'
+// | 'expertise'
+// | 'tracking'
+// | 'network'
+// | 'eco'
+// | 'services'
+// | 'process'
+// | 'explore'
+// | 'team'
+// | 'footer';
 
 export type LandingPageSectionConfig = {
   id: LandingPageSectionId;

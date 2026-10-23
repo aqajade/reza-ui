@@ -14,6 +14,8 @@ import { Tracking } from '@/components/sections/Tracking';
 import type { LandingPage, LandingPageData } from '@/types/layout/landing-page';
 import type { LandingPageSectionId } from '@/types/layout/page-schema';
 
+import { LandingItqanMath } from '../sections/LandingItqanMath';
+
 // Definisi props standar yang diterima oleh setiap Section Component
 export type SectionComponentProps<T = unknown> = {
   data: T;
@@ -22,19 +24,22 @@ export type SectionComponentProps<T = unknown> = {
 
 // Mapping registry yang Type-Safe untuk setiap Section
 const sectionRegistry: {
-  [K in LandingPageSectionId]: ComponentType<SectionComponentProps<LandingPageData[K]>>;
+  [K in LandingPageSectionId]: ComponentType<
+    SectionComponentProps<LandingPageData[K]>
+  >;
 } = {
-  hero: Hero,
-  tailored: Tailored,
-  expertise: Expertise,
-  tracking: Tracking,
-  network: Network,
-  eco: Eco,
-  services: Services,
-  process: Process,
-  explore: Explore,
-  team: Team,
-  footer: Footer,
+  landingItqanMath: LandingItqanMath,
+  // hero: Hero,
+  // tailored: Tailored,
+  // expertise: Expertise,
+  // tracking: Tracking,
+  // network: Network,
+  // eco: Eco,
+  // services: Services,
+  // process: Process,
+  // explore: Explore,
+  // team: Team,
+  // footer: Footer,
 };
 
 type PageRendererProps = {
@@ -57,7 +62,9 @@ export function PageRenderer({ page }: PageRendererProps) {
         >;
 
         if (!SectionComponent) {
-          console.warn(`Section with id "${section.id}" not found in registry.`);
+          console.warn(
+            `Section with id "${section.id}" not found in registry.`
+          );
           return null;
         }
 
@@ -75,5 +82,3 @@ export function PageRenderer({ page }: PageRendererProps) {
     </>
   );
 }
-
-
