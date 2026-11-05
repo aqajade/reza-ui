@@ -1,5 +1,6 @@
-'use client';
-
+// ⚠️ TANPA 'use client' — ini induk dari pola "Client Leaf".
+// Section ini 100% Server Component. Interaktivitas (state, klik, submit)
+// DIAMANKAN di <PracticeSetup> (client leaf) di ujung render tree.
 import Image from 'next/image';
 import * as React from 'react';
 
@@ -7,49 +8,20 @@ import { CustomContainer } from '@/components/layout/CustomContainer';
 import { PageSection } from '@/components/layout/PageSection';
 import { CardStack } from '@/components/layout/stack/CardStack';
 import { Badge } from '@/components/ui/Badge';
-import {
-  ButtonGroup,
-  type ButtonGroupOption,
-} from '@/components/ui/ButtonGroup';
+import { PracticeSetup } from '@/components/ui/PracticeSetup';
 import { cn } from '@/lib/utils';
 
-import { Button } from '../ui/button';
-
-export type TotalQuestion = 5 | 10 | 15 | 20;
-export type TimerOption = 'off' | '5' | '10' | '15';
-
 export type LandingItqanMathProps = {
+  /**
+   * Sengaja kosong (Record<string, never>) — kontrak SSOT di
+   * `LandingPageData['landingItqanMath']`. Semua teks di-hardcode server-side
+   * supaya tetap RSC-friendly.
+   */
   data: Record<string, never>;
   className?: string;
-  onStart?: (setup: { total: TotalQuestion; timer: TimerOption }) => void;
 };
 
-const totalOptions: ButtonGroupOption<TotalQuestion>[] = [
-  { label: '5', value: 5 },
-  { label: '10', value: 10 },
-  { label: '15', value: 15 },
-  { label: '20', value: 20 },
-];
-
-const timerOptions: ButtonGroupOption<TimerOption>[] = [
-  { label: 'Santai', value: 'off' },
-  { label: '5 Mnt', value: '5' },
-  { label: '10 Mnt', value: '10' },
-  { label: '15 Mnt', value: '15' },
-];
-
-export function LandingItqanMath({
-  className,
-  onStart,
-}: LandingItqanMathProps) {
-  const [total, setTotal] = React.useState<TotalQuestion>(10);
-  const [timer, setTimer] = React.useState<TimerOption>('off');
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    onStart?.({ total, timer });
-  };
-
+export function LandingItqanMath({ className }: LandingItqanMathProps) {
   return (
     <PageSection
       sectionElement='section'
@@ -104,52 +76,11 @@ export function LandingItqanMath({
               </p>
             </div>
 
-            {/* Form Setup Generator */}
-            <form onSubmit={handleSubmit} className='flex flex-col gap-4 pt-1'>
-              {/* Parameter 1: Total Soal */}
-              <div className='flex flex-col gap-1.5'>
-                <div className='flex items-center justify-between text-xs font-bold text-gray-200'>
-                  <span className='flex items-center gap-1.5'>
-                    <span className='text-sm text-emerald-400'>✓</span>
-                    <span>Total Soal</span>
-                  </span>
-                  <span className='text-[10px] font-normal text-emerald-300/80'>
-                    Pilih jumlah
-                  </span>
-                </div>
-                <ButtonGroup
-                  options={totalOptions}
-                  value={total}
-                  onChange={setTotal}
-                  columns={4}
-                />
-              </div>
-
-              {/* Parameter 2: Timer */}
-              <div className='flex flex-col gap-1.5'>
-                <div className='flex items-center justify-between text-xs font-bold text-gray-200'>
-                  <span className='flex items-center gap-1.5'>
-                    <span className='text-sm text-emerald-400'>⏱</span>
-                    <span>Batas Waktu (Timer)</span>
-                  </span>
-                  <span className='text-[10px] font-normal text-emerald-300/80'>
-                    Opsional
-                  </span>
-                </div>
-                <ButtonGroup
-                  options={timerOptions}
-                  value={timer}
-                  onChange={setTimer}
-                  columns={4}
-                />
-              </div>
-
-              {/* Action Button CTA */}
-              <Button type='submit' size='md' fullWidth className='mt-2'>
-                <span>Mulai Latihan Penjumlahan</span>
-                <span className='text-xs'>→</span>
-              </Button>
-            </form>
+            {/* 🌱 CLIENT BOUNDARY — satu-satunya daun yang "use client".
+                Form ini di-serialisasi KOSONG ke browser: semua label &
+                opsi dirender di server sebagai children. JS klien hanya
+                memuat state total/timer. */}
+            <PracticeSetup />
           </CardStack>
         </main>
 

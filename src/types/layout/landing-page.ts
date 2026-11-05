@@ -1,5 +1,4 @@
-// src/types/layout/landing-page-config.ts
-
+// src/types/layout/landing-page.ts
 /**
  * ==========================================================================
  * 3. SUB-TYPES DATA KONTEN LANDING PAGE (Payload Array Looping & Specific Stucture)
@@ -45,12 +44,20 @@ export type TimerOptions = {
  * ==========================================================================
  */
 export type LandingPageData = {
+  /**
+   * Section Setup Generator ItqanMath (Fase 1 MVP).
+   * `Record<string, never>` = sengaja tanpa payload: SELURUH teks & opsi
+   * di-hardcode di dalam komponen agar tetap Server Component (zero JS klien
+   * untuk konten statis). Key ini WAJIB terdaftar di LandingPageSectionId.
+   */
+  landingItqanMath: Record<string, never>;
+
   headerItqanMath: {
     section: SectionConfig & {
       layout: LayoutConfig & {
         stackElement: 'header';
-        stackDirection:'row'
-      }  
+        stackDirection: 'row';
+      };
     };
   };
 
@@ -71,7 +78,7 @@ export type LandingPageData = {
   };
 
   hero: {
-    section: BaseLayoutConfig & {
+    section: SectionConfig & {
       header: HeaderConfig & {
         title: string;
         subTitle: string;

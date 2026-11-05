@@ -12,6 +12,11 @@ import trackingImg from '@/../public/images/tracking/trackingg.png';
 import { LandingPageData } from '@/types/layout/landing-page';
 // import { RawImageConfig } from '@/types/layout/page-config';
 export const landingPageData: LandingPageData = {
+  // Section Setup Generator ItqanMath (Fase 1 MVP).
+  // Payloadnya kosong by design: seluruh konten dirender server-side, sementara
+  // state interaktif hidup di client leaf <PracticeSetup>. Lihat PageRenderer.
+  landingItqanMath: {},
+
   // landingItqanMath: {
   //   layout: {
   //     id: 'itqan-generator',
