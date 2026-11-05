@@ -3,8 +3,9 @@ import type { StaticImageData } from 'next/image';
 
 export type SectionElement = 'section' | 'header' | 'footer' | 'aside' | 'main';
 
+// u/ yg berurusan dg perbedaan semantik container 
 export type SectionConfig = BaseLayoutConfig & {
-  layout: {
+  layout: LayoutConfig & {
     id?: string;
     sectionElement?: SectionElement;
     sectionClass?: string;
@@ -12,12 +13,14 @@ export type SectionConfig = BaseLayoutConfig & {
   };
 };
 
+// base disini general yg dipanggil u/ turunan selain section container
 export type BaseLayoutConfig = {
   layout?: LayoutConfig;
   header?: HeaderConfig;
   image?: RawImageConfig;
 };
 
+//layout disini u/ sistem turunan krn dipake turunan content,detail,&card
 export type LayoutConfig = {
   id?: string; //id superoptional u/ case animation aja
   stackDirection?: 'col' | 'row';

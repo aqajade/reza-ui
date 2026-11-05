@@ -3,15 +3,15 @@
 // Static Image Import untuk jaminan performa anti-lag di laptop low-spec PC
 import { CustomContainer } from '@/components/layout/CustomContainer';
 import { PageSection } from '@/components/layout/PageSection';
-import { SectionHeader } from '@/components/layout/SectionHeader';
+import { SectionHeader } from '@/components/layout/header/SectionHeader';
 import { landingPageData } from '@/data/landing-page';
 import { cn } from '@/lib/utils';
 
-import { CardStack } from '../layout/CardStack';
-import { ContentStack } from '../layout/ContentStack';
-import { DetailStack } from '../layout/DetailStack';
 import { ImageContainer } from '../layout/ImageContainer';
-import { SectionStack } from '../layout/SectionStack';
+import { CardStack } from '../layout/stack/CardStack';
+import { ContentStack } from '../layout/stack/ContentStack';
+import { DetailStack } from '../layout/stack/DetailStack';
+import { SectionStack } from '../layout/stack/SectionStack';
 //props cN definition
 type ExploreProps = {
   className?: string;

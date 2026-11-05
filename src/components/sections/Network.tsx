@@ -6,10 +6,10 @@ import { PageSection } from '@/components/layout/PageSection';
 import { landingPageData } from '@/data/landing-page';
 import { cn } from '@/lib/utils';
 
-import { CardStack } from '../layout/CardStack';
 import { ImageContainer } from '../layout/ImageContainer';
-import { SectionHeader } from '../layout/SectionHeader';
-import { SectionStack } from '../layout/SectionStack';
+import { SectionHeader } from '../layout/header/SectionHeader';
+import { CardStack } from '../layout/stack/CardStack';
+import { SectionStack } from '../layout/stack/SectionStack';
 //props cN definition
 type NetworkProps = {
   className?: string;

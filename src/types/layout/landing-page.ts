@@ -29,13 +29,38 @@ type DataConfig = HeaderConfig & {
   description: string;
 };
 
+export type TotalQuestionOptions = {
+  label: string;
+  value: number;
+};
+
+export type TimerOptions = {
+  label: string;
+  value: string; // 'off' | '5' | '10' dsb
+};
+
 /**
  * ==========================================================================
  * 4. MAIN LANDINGPAGE BLUEPRINT (The Single Source of Truth / SSOT TUI Logistik)
  * ==========================================================================
  */
 export type LandingPageData = {
-  landingItqanMath: Record<string, never>;
+  headerItqanMath: {
+    section: SectionConfig & {
+      layout: LayoutConfig & {
+        stackElement: 'header';
+        stackDirection:'row'
+      }  
+    };
+  };
+
+  footerItqanMath: {
+    section: BaseLayoutConfig & {
+      header: HeaderConfig & {
+        title: string;
+      };
+    };
+  };
 
   header: {
     section: SectionConfig & {
@@ -44,17 +69,6 @@ export type LandingPageData = {
       };
     };
   };
-
-  // header: {
-  //   section: BaseLayoutConfig & {
-  //     section: SectionConfig & {
-  //       sectionElement: 'header'; // 🟢 Semantik tag pindah ke section!
-  //     };
-  //     layout: LayoutConfig & {
-  //       stackElement: 'header';
-  //     };
-  //   };
-  // };
 
   hero: {
     section: BaseLayoutConfig & {
@@ -208,14 +222,13 @@ export type LandingPageData = {
 
   test: {
     section: SectionConfig & {
-      layout:{
-        sectionElement:'header'
-        containerClass:string
-        stackClass:string
-      }
+      layout: {
+        sectionElement: 'header';
+        containerClass: string;
+        stackClass: string;
+      };
     };
   };
-
 };
 
 // Gabungan SSOT untuk halaman lengkap:

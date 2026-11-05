@@ -3,12 +3,12 @@
 // Static Image Import untuk jaminan performa anti-lag di laptop low-spec PC
 import { CustomContainer } from '@/components/layout/CustomContainer';
 import { PageSection } from '@/components/layout/PageSection';
-import { SectionHeader } from '@/components/layout/SectionHeader';
+import { SectionHeader } from '@/components/layout/header/SectionHeader';
 import { landingPageData } from '@/data/landing-page';
 import { cn } from '@/lib/utils';
 
 import { ImageContainer } from '../layout/ImageContainer';
-import { SectionStack } from '../layout/SectionStack';
+import { SectionStack } from '../layout/stack/SectionStack';
 //props cN definition
 type ProcessProps = {
   className?: string;

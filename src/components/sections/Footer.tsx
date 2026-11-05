@@ -2,14 +2,14 @@
 
 // Static Image Import untuk jaminan performa anti-lag di laptop low-spec PC
 import { CustomContainer } from '@/components/layout/CustomContainer';
+import { SectionHeader } from '@/components/layout/header/SectionHeader';
 import { PageSection } from '@/components/layout/PageSection';
-import { SectionHeader } from '@/components/layout/SectionHeader';
 import { landingPageData } from '@/data/landing-page';
 import { cn } from '@/lib/utils';
 import type { LandingPageData } from '@/types/layout/landing-page';
 
-import { ContentStack } from '../layout/ContentStack';
-import { SectionStack } from '../layout/SectionStack';
+import { ContentStack } from '../layout/stack/ContentStack';
+import { SectionStack } from '../layout/stack/SectionStack';
 //props cN definition
 type FooterProps = {
   data: LandingPageData['footer'];

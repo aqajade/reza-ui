@@ -1,3 +1,4 @@
+// src/app/App.tsx
 import { PageRenderer } from '@/components/renderer/PageRenderer';
 import { landingPage } from '@/compositions/landing-page';
 

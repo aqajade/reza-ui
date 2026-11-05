@@ -1,20 +1,20 @@
-// src/components/layout/StackLayout.tsx
+// src/components/layout/BaseStack.tsx
 import * as React from 'react';
 
 import { cn } from '@/lib/utils';
 
-export type StackLayoutProps = React.ComponentProps<'div'> & {
+export type BaseStackProps = React.ComponentProps<'div'> & {
   stackDirection?: 'col' | 'row';
   stackClass?: string;
 };
 
-export function StackLayout({
+export function BaseStack({
   className,
   stackDirection = 'col',
   stackClass,
   children,
   ...props
-}: StackLayoutProps) {
+}: BaseStackProps) {
   return (
     <div
       className={cn(

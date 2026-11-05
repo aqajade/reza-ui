@@ -3,9 +3,9 @@
 import Image from 'next/image';
 import * as React from 'react';
 
-import { CardStack } from '@/components/layout/CardStack';
 import { CustomContainer } from '@/components/layout/CustomContainer';
 import { PageSection } from '@/components/layout/PageSection';
+import { CardStack } from '@/components/layout/stack/CardStack';
 import { Badge } from '@/components/ui/Badge';
 import {
   ButtonGroup,
@@ -71,8 +71,7 @@ export function LandingItqanMath({
                   height={12}
                   // className='h-auto w-auto'
                   priority
-                  className='invert' 
-
+                  className='invert'
                 />
               </div>
               <div>

@@ -12,7 +12,49 @@ import trackingImg from '@/../public/images/tracking/trackingg.png';
 import { LandingPageData } from '@/types/layout/landing-page';
 // import { RawImageConfig } from '@/types/layout/page-config';
 export const landingPageData: LandingPageData = {
-  landingItqanMath: {},
+  // landingItqanMath: {
+  //   layout: {
+  //     id: 'itqan-generator',
+  //     sectionElement: 'section',
+  //   },
+  //   brand: {
+  //     logoSrc: '/icons/logo.svg',
+  //     title: 'Itqan',
+  //     highlight: 'Math',
+  //     subtitle: 'Modul 01: Penjumlahan',
+  //     badgeText: 'Fase Fondasi',
+  //   },
+  //   topic: {
+  //     iconSymbol: '+',
+  //     title: 'Latihan Penjumlahan',
+  //     description:
+  //       'Bangun ketelitian dan kecepatan berhitung dasar secara bertahap.',
+  //   },
+  //   form: {
+  //     totalLabel: 'Total Soal',
+  //     totalHint: 'Pilih jumlah',
+  //     defaultTotal: 10,
+  //     totalOptions: [
+  //       { label: '5', value: 5 },
+  //       { label: '10', value: 10 },
+  //       { label: '15', value: 15 },
+  //       { label: '20', value: 20 },
+  //     ],
+  //     timerLabel: 'Batas Waktu (Timer)',
+  //     timerHint: 'Opsional',
+  //     defaultTimer: 'off',
+  //     timerOptions: [
+  //       { label: 'Santai', value: 'off' },
+  //       { label: '5 Mnt', value: '5' },
+  //       { label: '10 Mnt', value: '10' },
+  //       { label: '15 Mnt', value: '15' },
+  //     ],
+  //     submitText: 'Mulai Latihan Penjumlahan',
+  //   },
+  //   footer: {
+  //     text: '© 2026 ItqanMath • Belajar Bertahap Tanpa Iklan',
+  //   },
+  // },
 
   header: {
     section: {

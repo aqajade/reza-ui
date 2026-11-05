@@ -1,4 +1,4 @@
-// src/components/layout/BaseHeader.tsx
+// src/components/layout/header/BaseHeader.tsx
 import * as React from 'react';
 
 import { parseHighlightText } from '@/lib/text-parser';

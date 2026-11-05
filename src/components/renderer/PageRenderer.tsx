@@ -1,3 +1,5 @@
+// src\components\renderer\PageRenderer.tsx
+// src\components\renderer\PageRenderer.tsx
 import type { ComponentType } from 'react';
 
 // import { Eco } from '@/components/sections/Eco';

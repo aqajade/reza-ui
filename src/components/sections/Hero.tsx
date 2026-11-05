@@ -1,13 +1,13 @@
-import { SectionHeader } from '@/components/layout/SectionHeader';
+import { SectionHeader } from '@/components/layout/header/SectionHeader';
 import { cn } from '@/lib/utils';
 import type { LandingPageData } from '@/types/layout/landing-page';
 
-import { ContentStack } from '../layout/ContentStack';
 import { CustomContainer } from '../layout/CustomContainer';
 import { ImageContainer } from '../layout/ImageContainer';
 import { PageSection } from '../layout/PageSection';
+import { ContentStack } from '../layout/stack/ContentStack';
 // import { ImageContainer } from '../layout/ImageContainer';
-import { SectionStack } from '../layout/SectionStack';
+import { SectionStack } from '../layout/stack/SectionStack';
 //props cN definition
 type HeroProps = {
   data: LandingPageData['hero'];

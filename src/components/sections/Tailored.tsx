@@ -3,14 +3,14 @@
 // 🟢 KUNCI SAKTI BIP: Static Image Import agar VS Code auto-detect super lancar!
 import { CustomContainer } from '@/components/layout/CustomContainer';
 import { PageSection } from '@/components/layout/PageSection';
-import { SectionHeader } from '@/components/layout/SectionHeader';
-import { StackLayout } from '@/components/layout/StackLayout';
+import { SectionHeader } from '@/components/layout/header/SectionHeader';
+import { StackLayout } from '@/components/layout/stack/BaseStack';
 import { landingPageData } from '@/data/landing-page';
 import { cn } from '@/lib/utils';
 
-import { CardStack } from '../layout/CardStack';
-import { ContentStack } from '../layout/ContentStack';
 import { ImageContainer } from '../layout/ImageContainer';
+import { CardStack } from '../layout/stack/CardStack';
+import { ContentStack } from '../layout/stack/ContentStack';
 //props cN definition
 type TailoredProps = {
   className?: string;

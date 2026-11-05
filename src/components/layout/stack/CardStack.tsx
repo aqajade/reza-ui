@@ -3,24 +3,29 @@ import * as React from 'react';
 import { cn } from '@/lib/utils';
 import type { LayoutConfig } from '@/types/layout/base';
 
-import { StackLayout } from './StackLayout';
+import { BaseStack } from './BaseStack';
 
 // Pola seragam untuk SectionStack / ContentStack / DetailStack / CardStack:
-type StackProps = React.ComponentProps<typeof StackLayout> & {
+type StackProps = React.ComponentProps<typeof BaseStack> & {
   config?: LayoutConfig;
 };
 
-export function DetailStack({ config, className, children, ...props }: StackProps) {
+export function CardStack({
+  config,
+  className,
+  children,
+  ...props
+}: StackProps) {
   const { stackDirection, stackClass } = config || {};
 
   return (
-    <StackLayout
+    <BaseStack
       stackDirection={stackDirection}
       stackClass={stackClass}
-      className={cn('detail-stack', className)}
+      className={cn('card-stack', className)}
       {...props}
     >
       {children}
-    </StackLayout>
+    </BaseStack>
   );
 }
