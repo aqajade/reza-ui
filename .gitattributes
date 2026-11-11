@@ -1,8 +1,8 @@
+# di settings: Files: Eol pilih yg \n
+
 # Output CSS Tailwind: tetap LF
 src/output.css text eol=lf
 
-# Default: Git mendeteksi file text secara otomatis
-* text=auto
 
 # Source files: gunakan LF secara konsisten
 *.txt text eol=lf
@@ -13,3 +13,7 @@ src/output.css text eol=lf
 *.tsx text eol=lf
 *.svg text eol=lf
 *.json text eol=lf
+
+# Default: Git mendeteksi file text secara otomatis
+# * text=auto
+* text=auto eol=lf

@@ -2,6 +2,7 @@
 
 # dependencies
 /.ai
+/.claude
 /archive
 /node_modules
 /.pnp

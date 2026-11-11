@@ -52,12 +52,26 @@ export type LandingPageData = {
    */
   landingItqanMath: Record<string, never>;
 
-  headerItqanMath: {
-    section: SectionConfig & {
-      layout: LayoutConfig & {
-        stackElement: 'header';
+  headerItqanMath: { //types sesuai nama section camelCase
+    section: SectionConfig & { //flexbox terluar (row, membagi dua untuk logo+title sisi kiri dan badge sisi kanan)
+      layout: LayoutConfig & { //pengaturan elemen semantik sekiranya dibutuhkan, direction nya (by default udah col tambahin stackDirection kalau emang butuh row), containerClass u/ atur max-width sekiranya beda dari ukuran lainnya (karena ini elemen semantik yg bukan div jadi aman nya dikasih aja biar kita lebih aware nanti tolong bantu catat di note /.ai ya terkait section untuk halaman yg bukan div wajibkan aja containerClass karena gatau apa butuh w-full atau gimana nya) 
+        sectionElement: 'header';
+        stackDirection: 'row';
+        containerClass: string;
+      };
+      header: HeaderConfig & { //ini untuk value di badge nya
+        title: string;
+      };
+    };
+    content: BaseLayoutConfig & { //ini untuk scope logo+title
+      layout: LayoutConfig & { //atur row krn logo+title kirikanan
         stackDirection: 'row';
       };
+      header: HeaderConfig & { //untuk tulisan ItqanMath pake title tulisan bawahnya pakai desc, aku udah sediakan title subTitle descriptionIntro description descriptionOutro, jadi kalau butuh 5 jenis teks yg beda dalam 1 scope tinggal diatur aja
+        title: string;
+        description: string;
+      };
+      image: RawImageConfig; //ini krn butuh gambar u/ logo nya pake props yg ini
     };
   };
 
