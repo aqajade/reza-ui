@@ -8,6 +8,8 @@ import { landingPageData } from '@/data/landing-page';
 import { cn } from '@/lib/utils';
 import type { LandingPageData } from '@/types/layout/landing-page';
 
+import { ContentHeader } from '../layout/header/ContentHeader';
+import { DetailHeader } from '../layout/header/DetailHeader';
 import { ContentStack } from '../layout/stack/ContentStack';
 import { SectionStack } from '../layout/stack/SectionStack';
 //props cN definition
@@ -21,17 +23,13 @@ export function Footer({ className }: FooterProps) {
 
   return (
     // <PageSection id={section.layout.id} sectionClass={section.layout.sectionClass}>
-    <PageSection
-      id={section.layout.id}
-      sectionElement='footer'
-      className={cn('', className)}
-    >
+    <PageSection>
       <CustomContainer>
-        <SectionStack config={section.layout}>
-          <SectionHeader config={section.header} />
-          <ContentStack config={content.layout}>
-            <SectionHeader config={content.header} />
-            <SectionHeader config={detail.header} />
+        <SectionStack>
+          <SectionHeader />
+          <ContentStack>
+            <ContentHeader />
+            <DetailHeader />
           </ContentStack>
         </SectionStack>
       </CustomContainer>

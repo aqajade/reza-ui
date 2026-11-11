@@ -73,7 +73,8 @@ export type RawImageConfig = {
 
 export type ImageConfig = {
   src: string | StaticImageData;
-  alt?: string;
+  alt: string;
+  className?: string;
   priority?: boolean;
   loading?: 'lazy' | 'eager';
   sizes: string;
