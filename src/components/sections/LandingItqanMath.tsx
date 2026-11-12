@@ -1,27 +1,26 @@
 // ⚠️ TANPA 'use client' — ini induk dari pola "Client Leaf".
 // Section ini 100% Server Component. Interaktivitas (state, klik, submit)
 // DIAMANKAN di <PracticeSetup> (client leaf) di ujung render tree.
-import Image from 'next/image';
 import * as React from 'react';
 
 import { CustomContainer } from '@/components/layout/CustomContainer';
 import { PageSection } from '@/components/layout/PageSection';
 import { CardStack } from '@/components/layout/stack/CardStack';
-import { Badge } from '@/components/ui/Badge';
+import { HeaderItqanMath } from '@/components/sections/HeaderItqanMath';
 import { PracticeSetup } from '@/components/ui/PracticeSetup';
+import { landingPageData } from '@/data/landing-page';
 import { cn } from '@/lib/utils';
 
 export type LandingItqanMathProps = {
-  /**
-   * Sengaja kosong (Record<string, never>) — kontrak SSOT di
-   * `LandingPageData['landingItqanMath']`. Semua teks di-hardcode server-side
-   * supaya tetap RSC-friendly.
-   */
-  data: Record<string, never>;
+  data?: Record<string, never>;
+  headerData?: typeof landingPageData.headerItqanMath;
   className?: string;
 };
 
-export function LandingItqanMath({ className }: LandingItqanMathProps) {
+export function LandingItqanMath({
+  headerData = landingPageData.headerItqanMath,
+  className,
+}: LandingItqanMathProps) {
   return (
     <PageSection
       sectionElement='section'
@@ -31,34 +30,8 @@ export function LandingItqanMath({ className }: LandingItqanMathProps) {
       )}
     >
       <CustomContainer containerClass='w-full max-w-md mx-auto flex flex-col h-full justify-between'>
-        {/* 1. Header Ringkas (Logo + Title + Badge Status) */}
-        <header className='mb-2 w-full shrink-0'>
-          <div className='flex items-center justify-between rounded-xl border border-[#123D31]/90 bg-[#0B2B22]/85 px-3 py-2 shadow-md backdrop-blur-md'>
-            <div className='flex items-center space-x-2'>
-              <div className='flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-emerald-500/40 bg-[#0B2B22] p-1 shadow-inner'>
-                <Image
-                  src='/icons/logo.svg'
-                  alt='ItqanMath Logo'
-                  width={12}
-                  height={12}
-                  // className='h-auto w-auto'
-                  priority
-                  className='invert'
-                />
-              </div>
-              <div>
-                <span className='block text-base leading-none font-extrabold tracking-tight text-white'>
-                  Itqan<span className='text-emerald-400'>Math</span>
-                </span>
-                <span className='text-[9px] font-medium tracking-wider text-emerald-300/80 uppercase'>
-                  Modul 01: Penjumlahan
-                </span>
-              </div>
-            </div>
-
-            <Badge dot>Fase Fondasi</Badge>
-          </div>
-        </header>
+        {/* 1. Header Modular (Logo + Title + Badge Status) */}
+        <HeaderItqanMath data={headerData} />
 
         {/* 2. Main Card Container (Glass Card Form Setup) */}
         <main className='my-auto flex min-h-0 w-full flex-1 flex-col justify-center'>

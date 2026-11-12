@@ -111,7 +111,7 @@ import { ImageConfig, RawImageConfig } from '@/types/layout/base';
 
 type ImageContainerProps = React.ComponentProps<'div'> & {
   // Mengizinkan komponen menerima data mentah (RawImageConfig) atau yang sudah dikonversi (ImageConfig)
-  config: RawImageConfig | ImageConfig;
+  config?: RawImageConfig | ImageConfig;
   imageClass?: string;
 };
 
@@ -129,6 +129,8 @@ export function ImageContainer({
   style,
   ...props
 }: ImageContainerProps) {
+  if (!config) return null;
+
   // Jika data yang masuk masih mentah (RawImageConfig), konversi otomatis di sini
   const finalConfig = isFluidConfig(config) ? config : parseRawImage(config);
 

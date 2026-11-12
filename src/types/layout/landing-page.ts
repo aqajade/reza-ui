@@ -55,8 +55,9 @@ export type LandingPageData = {
   headerItqanMath: { //types sesuai nama section camelCase
     section: SectionConfig & { //flexbox terluar (row, membagi dua untuk logo+title sisi kiri dan badge sisi kanan)
       layout: LayoutConfig & { //pengaturan elemen semantik sekiranya dibutuhkan, direction nya (by default udah col tambahin stackDirection kalau emang butuh row), containerClass u/ atur max-width sekiranya beda dari ukuran lainnya (karena ini elemen semantik yg bukan div jadi aman nya dikasih aja biar kita lebih aware nanti tolong bantu catat di note /.ai ya terkait section untuk halaman yg bukan div wajibkan aja containerClass karena gatau apa butuh w-full atau gimana nya) 
-        sectionElement: 'header';
         stackDirection: 'row';
+        sectionElement: 'header';
+        sectionClass: string
         containerClass: string;
       };
       header: HeaderConfig & { //ini untuk value di badge nya

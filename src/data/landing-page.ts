@@ -17,6 +17,55 @@ export const landingPageData: LandingPageData = {
   // state interaktif hidup di client leaf <PracticeSetup>. Lihat PageRenderer.
   landingItqanMath: {},
 
+  headerItqanMath: {
+    section: {
+      layout: {
+        id: 'header-itqan-math',
+        stackDirection: 'row',
+        sectionElement: 'header',
+        sectionClass:'mb-2 w-full shrink-0 select-none',
+        containerClass: 'w-full flex items-center justify-between rounded-xl border border-[#123D31]/90 bg-[#0B2B22]/85 px-3 py-2 shadow-md backdrop-blur-md',
+        stackClass: 'flex w-full items-center justify-between',
+      },
+      header: {
+        title: 'Fase Fondasi',
+        headerClass:
+          'inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full font-sans bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-[10px] font-semibold tracking-wide select-none',
+      },
+    },
+    content: {
+      layout: {
+        stackDirection: 'row',
+        stackClass: 'flex items-center space-x-2',
+      },
+      header: {
+        title: 'Itqan[Math](text-emerald-400)',
+        titleClass: 'block text-base leading-none font-extrabold tracking-tight text-white',
+        description: 'Modul 01: Penjumlahan',
+        descriptionClass: 'text-[9px] font-medium tracking-wider text-emerald-300/80 uppercase',
+      },
+      image: {
+        src: '/icons/logo.svg',
+        alt: 'ItqanMath Logo',
+        minWidth: 12,
+        maxWidth: 12,
+        aspectRatio: '1/1',
+        priority: true,
+        containerClass:
+          'flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-emerald-500/40 bg-[#0B2B22] p-1 shadow-inner',
+        elementClass: 'invert',
+      },
+    },
+  },
+
+  footerItqanMath: {
+    section: {
+      header: {
+        title: '© 2026 ItqanMath • وَقْفٌ لِلهِ تَعَالَى',
+      },
+    },
+  },
+
   // landingItqanMath: {
   //   layout: {
   //     id: 'itqan-generator',

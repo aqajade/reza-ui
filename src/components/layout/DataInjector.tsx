@@ -93,7 +93,7 @@ export function DataInjector({ data, children }: DataInjectorProps) {
         if (childProps.config === undefined && data.section) {
           newProps.config = data.section;
         }
-      } else if (componentName === 'SectionHeader') {
+      } else if (componentName === 'SectionHeader' || componentName === 'SectionBadge') {
         if (childProps.config === undefined && data.section?.header) {
           newProps.config = data.section.header;
         }
@@ -105,7 +105,7 @@ export function DataInjector({ data, children }: DataInjectorProps) {
         if (childProps.config === undefined && data.content) {
           newProps.config = data.content;
         }
-      } else if (componentName === 'ContentHeader') {
+      } else if (componentName === 'ContentHeader' || componentName === 'ContentBadge') {
         if (childProps.config === undefined && data.content?.header) {
           newProps.config = data.content.header;
         }
@@ -117,7 +117,7 @@ export function DataInjector({ data, children }: DataInjectorProps) {
         if (childProps.config === undefined && data.detail) {
           newProps.config = data.detail;
         }
-      } else if (componentName === 'DetailHeader') {
+      } else if (componentName === 'DetailHeader' || componentName === 'DetailBadge') {
         if (childProps.config === undefined && data.detail?.header) {
           newProps.config = data.detail.header;
         }
@@ -129,7 +129,7 @@ export function DataInjector({ data, children }: DataInjectorProps) {
         if (childProps.config === undefined && data.card) {
           newProps.config = data.card;
         }
-      } else if (componentName === 'CardHeader') {
+      } else if (componentName === 'CardHeader' || componentName === 'CardBadge') {
         if (childProps.config === undefined && data.card?.header) {
           newProps.config = data.card.header;
         }
@@ -141,6 +141,16 @@ export function DataInjector({ data, children }: DataInjectorProps) {
           const scopePayload = getScopePayload(data, nextScope) || data.section;
           if (scopePayload?.image) {
             newProps.config = scopePayload.image;
+          }
+        }
+      }
+
+      // 6. BASE BADGE / LEGACY BADGE (Fallback mengambil header dari active scope)
+      if (componentName === 'BaseBadge' || componentName === 'Badge') {
+        if (childProps.config === undefined) {
+          const scopePayload = getScopePayload(data, nextScope) || data.section;
+          if (scopePayload?.header) {
+            newProps.config = scopePayload.header;
           }
         }
       }
