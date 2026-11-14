@@ -7,12 +7,14 @@ type PageSectionProps = React.ComponentProps<'section'> & {
   config?: SectionConfig;
   sectionElement?: SectionElement;
   sectionClass?: string;
+  sectionVariant?: import('@/types/layout/base').SectionVariant;
 };
 
 export function PageSection({
   config,
   sectionElement,
   sectionClass,
+  sectionVariant,
   className,
   children,
   ...props
@@ -22,11 +24,16 @@ export function PageSection({
     'section') as React.ElementType;
   const resolvedClass = sectionClass || config?.layout.sectionClass;
   const resolvedId = props.id || config?.layout.id;
+  const resolvedVariant = sectionVariant || config?.layout.sectionVariant || 'root';
 
   return (
     <Component
       id={resolvedId}
-      className={cn('page-section', resolvedClass, className)}
+      className={cn(
+        resolvedVariant === 'sub' ? 'py-0' : 'page-section',
+        resolvedClass,
+        className
+      )}
       {...props}
     >
       {children}

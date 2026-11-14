@@ -44,9 +44,9 @@ export const landingPageData: LandingPageData = {
     section: {
       layout: {
         id: 'header-itqan-math',
+        sectionVariant: 'sub',
         stackDirection: 'row',
         sectionElement: 'header',
-        sectionClass:'py-0',
         containerClass: 'w-full flex items-center justify-between rounded-xl border border-[#123D31]/90 bg-[#0B2B22]/85 px-3 py-2 shadow-md backdrop-blur-md',
         stackClass: 'flex w-full items-center justify-between',
       },
@@ -85,8 +85,9 @@ export const landingPageData: LandingPageData = {
     section: {
       layout: {
         id: 'footer-itqan-math',
+        sectionVariant: 'sub',
         sectionElement: 'footer',
-        sectionClass: 'py-0 text-center', 
+        sectionClass: 'text-center', 
       },
       header: {
         description: '© 2026 ItqanMath • وَقْفٌ لِلهِ تَعَالَى',

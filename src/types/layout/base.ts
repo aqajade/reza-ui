@@ -4,12 +4,29 @@ import type { StaticImageData } from 'next/image';
 export type SectionElement = 'section' | 'header' | 'footer' | 'aside' | 'main';
 
 // u/ yg berurusan dg perbedaan semantik container 
+export type SectionVariant = 'root' | 'sub';
+
+// Layout Stack primitives
+export type StackDirection = 'col' | 'row';
+export type StackElement = 'div' | 'main' | 'header' | 'footer' | 'section' | 'aside';
+
+// Typography element primitives
+export type TitleElement = 'h1' | 'h2' | 'h3' | 'h4';
+export type SubTitleElement = 'h2' | 'h3' | 'h4';
+export type DescriptionElement = 'p' | 'span';
+export type DescriptionIntroElement = 'p' | 'span';
+export type DescriptionOutroElement = 'p' | 'span';
+
+// Image loading primitive
+export type ImageLoading = 'lazy' | 'eager';
+
 export type SectionConfig = BaseLayoutConfig & {
   layout: LayoutConfig & {
     id?: string;
     sectionElement?: SectionElement;
     sectionClass?: string;
     containerClass?: string;
+    sectionVariant?: SectionVariant;
   };
 };
 
@@ -23,9 +40,9 @@ export type BaseLayoutConfig = {
 //layout disini u/ sistem turunan krn dipake turunan content,detail,&card
 export type LayoutConfig = {
   id?: string; //id superoptional u/ case animation aja
-  stackDirection?: 'col' | 'row';
+  stackDirection?: StackDirection;
   stackClass?: string;
-  stackElement?: 'div' | 'main' | 'header' | 'footer' | 'section' | 'aside';
+  stackElement?: StackElement;
 };
 
 export type HeaderConfig = {
@@ -34,27 +51,27 @@ export type HeaderConfig = {
   title?: string;
   titleId?: string;
   titleClass?: string;
-  titleElement?: 'h1' | 'h2' | 'h3' | 'h4';
+  titleElement?: TitleElement;
 
   subTitle?: string;
   subTitleId?: string;
   subTitleClass?: string;
-  subTitleElement?: 'h2' | 'h3' | 'h4';
+  subTitleElement?: SubTitleElement;
 
   description?: string;
   descriptionId?: string;
   descriptionClass?: string;
-  descriptionElement?: 'p' | 'span';
+  descriptionElement?: DescriptionElement;
 
   descriptionIntro?: string;
   descriptionIntroId?: string;
   descriptionIntroClass?: string;
-  descriptionIntroElement?: 'p' | 'span';
+  descriptionIntroElement?: DescriptionIntroElement;
 
   descriptionOutro?: string;
   descriptionOutroId?: string;
   descriptionOutroClass?: string;
-  descriptionOutroElement?: 'p' | 'span';
+  descriptionOutroElement?: DescriptionOutroElement;
 };
 
 // bip: Tipe data mentah yang ditulis di file landing-page-data.ts
@@ -62,7 +79,7 @@ export type RawImageConfig = {
   src: string | StaticImageData;
   alt?: string;
   priority?: boolean;
-  loading?: 'lazy' | 'eager';
+  loading?: ImageLoading;
   minWidth: number;
   maxWidth: number;
   minViewport?: number;
@@ -77,7 +94,7 @@ export type ImageConfig = {
   alt: string;
   className?: string;
   priority?: boolean;
-  loading?: 'lazy' | 'eager';
+  loading?: ImageLoading;
   sizes: string;
   containerClass?: string;
   elementClass?: string;

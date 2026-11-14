@@ -2,7 +2,7 @@
 import * as React from 'react';
 
 import { cn } from '@/lib/utils';
-import type { LayoutConfig } from '@/types/layout/base';
+import type { LayoutConfig, StackDirection } from '@/types/layout/base';
 
 export type StackConfigInput = LayoutConfig | { layout?: LayoutConfig };
 
@@ -10,7 +10,7 @@ export const StackLayout = BaseStack;
 
 export type BaseStackProps = React.ComponentProps<'div'> & {
   config?: StackConfigInput;
-  stackDirection?: 'col' | 'row';
+  stackDirection?: StackDirection;
   stackClass?: string;
 };
 
