@@ -11,10 +11,15 @@ import { SectionStack } from '@/components/layout/stack/SectionStack';
 import type { LandingPageData } from '@/types/layout/landing-page';
 
 type FooterProps = {
-  data: LandingPageData['footer'];
+  data?: {
+    section?: import('@/types/layout/base').SectionConfig;
+    content?: import('@/types/layout/base').BaseLayoutConfig;
+    detail?: import('@/types/layout/base').BaseLayoutConfig;
+  };
 };
 
 export function Footer({ data }: FooterProps) {
+  if (!data) return null;
   return (
     <DataInjector data={data}>
       <PageSection>

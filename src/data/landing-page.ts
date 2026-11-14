@@ -12,10 +12,33 @@ import trackingImg from '@/../public/images/tracking/trackingg.png';
 import { LandingPageData } from '@/types/layout/landing-page';
 // import { RawImageConfig } from '@/types/layout/page-config';
 export const landingPageData: LandingPageData = {
-  // Section Setup Generator ItqanMath (Fase 1 MVP).
-  // Payloadnya kosong by design: seluruh konten dirender server-side, sementara
-  // state interaktif hidup di client leaf <PracticeSetup>. Lihat PageRenderer.
-  landingItqanMath: {},
+  landingItqanMath: {
+    section: {
+      layout: {
+        id: 'landing-itqan-math',
+        sectionElement: 'section',
+        sectionClass:
+          'page-section h-dvh',
+        containerClass:
+          'flex flex-col h-full justify-between',  
+        stackClass:
+          'flex flex-col justify-between gap-4 rounded-2xl border border-emerald-500/30 bg-[#0B2B22]/85 p-4 shadow-2xl backdrop-blur-md sm:p-5',
+        stackElement:
+          'main',
+      },
+      header: {
+        headerClass: 'flex flex-col items-center gap-1 text-center',
+        descriptionIntro: '+',
+        descriptionIntroClass:
+          'mb-1 inline-flex h-10 w-10 items-center justify-center rounded-xl border border-emerald-500/20 bg-emerald-500/10 text-emerald-400 text-2xl leading-none font-bold',
+        title: 'Latihan Penjumlahan',
+        titleClass: 'text-lg font-extrabold tracking-wide text-white sm:text-xl',
+        description:
+          'Bangun ketelitian dan kecepatan berhitung dasar secara bertahap.',
+        descriptionClass: 'text-xs text-gray-300',
+      },
+    },
+  },
 
   headerItqanMath: {
     section: {
@@ -23,7 +46,7 @@ export const landingPageData: LandingPageData = {
         id: 'header-itqan-math',
         stackDirection: 'row',
         sectionElement: 'header',
-        sectionClass:'mb-2 w-full shrink-0 select-none',
+        sectionClass:'py-0',
         containerClass: 'w-full flex items-center justify-between rounded-xl border border-[#123D31]/90 bg-[#0B2B22]/85 px-3 py-2 shadow-md backdrop-blur-md',
         stackClass: 'flex w-full items-center justify-between',
       },
@@ -49,19 +72,25 @@ export const landingPageData: LandingPageData = {
         alt: 'ItqanMath Logo',
         minWidth: 12,
         maxWidth: 12,
-        aspectRatio: '1/1',
+        aspectRatio: '250/417',
         priority: true,
         containerClass:
-          'flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-emerald-500/40 bg-[#0B2B22] p-1 shadow-inner',
-        elementClass: 'invert',
+          '',
+        elementClass: '',
       },
     },
   },
 
   footerItqanMath: {
     section: {
+      layout: {
+        id: 'footer-itqan-math',
+        sectionElement: 'footer',
+        sectionClass: 'py-0 text-center', 
+      },
       header: {
-        title: '© 2026 ItqanMath • وَقْفٌ لِلهِ تَعَالَى',
+        description: '© 2026 ItqanMath • وَقْفٌ لِلهِ تَعَالَى',
+        descriptionClass: 'text-[10px] text-gray-400',
       },
     },
   },
@@ -524,60 +553,49 @@ export const landingPageData: LandingPageData = {
     },
   },
 
-  // /** 12. FOOTER SECTION */ta
-  footer: {
-    section: {
-      layout: {
-        id: 'footer',
-        sectionElement: 'footer', //
-        stackClass:
-          'gap-[clamp(60px,14.9570px+11.4613vw,180px)] text-primary-400',
-      },
-      header: {
-        //
-        headerClass: 'text-left gap-[clamp(15px,7.4928px+1.9102vw,35px)]',
-        title: 'Connect with us today for \n seamless logistics support!', //
-        titleClass:
-          'text-[clamp(55px,51.2464px+0.9551vw,65px)] leading-[clamp(50px,48.1232px+0.4776vw,55px)] order-2 font-black',
-        subTitle: 'Freight Forwarding Solutions',
-        //
-        subTitleClass:
-          'text-[clamp(22px,20.8739px+0.2865vw,25px)] order-1 font-black ',
-      },
-    },
-    content: {
-      layout: {
-        //8
-        stackClass: 'gap-2 lg:flex-row lg:justify-between lg:items-end',
-      },
-      header: {
-        headerClass: 'text-left',
-        title: 'GET IN TOUCH NOW',
-        //  8
-        titleClass: 'text-[clamp(22px,20.4986px+0.3820vw,26px)] font-bold pb-2',
-        descriptionIntro: 'Phone: +62 21 8285 0201',
-        description: 'Mobile (WhatsApp): +62 877 8787 3352',
-        descriptionOutro: 'Email: sales@tuilogis.com',
-      },
-    },
-    detail: {
-      header: {
-        headerClass: 'text-left',
-        descriptionIntro: 'Address: Jl. Padang No. 5A, Kel. Pasar Manggis',
-        descriptionOutro: 'Kec. Setiabudi Jakarta Selatan, Indonesia',
-      },
-    },
-  },
-  // /** 13. TEST  SECTION */ta
-  test: {
-    section: {
-      layout: {
-        id: 'fittest',
-        sectionElement: 'header',
-        stackClass:
-          'gap-[clamp(60px,14.9570px+11.4613vw,180px)] text-primary-400',
-        containerClass: 'bg-blue',
-      },
-    },
-  },
+  // /** 12. FOOTER SECTION – Legacy TUI, dinonaktifkan */
+  // footer: {  //   section: {
+  //     layout: {
+  //       id: 'footer',
+  //       sectionElement: 'footer',
+  //       stackClass: 'gap-[clamp(60px,14.9570px+11.4613vw,180px)] text-primary-400',
+  //     },
+  //     header: {
+  //       headerClass: 'text-left gap-[clamp(15px,7.4928px+1.9102vw,35px)]',
+  //       title: 'Connect with us today for \n seamless logistics support!',
+  //       titleClass: 'text-[clamp(55px,51.2464px+0.9551vw,65px)] leading-[clamp(50px,48.1232px+0.4776vw,55px)] order-2 font-black',
+  //       subTitle: 'Freight Forwarding Solutions',
+  //       subTitleClass: 'text-[clamp(22px,20.8739px+0.2865vw,25px)] order-1 font-black ',
+  //     },
+  //   },
+  //   content: {
+  //     layout: { stackClass: 'gap-2 lg:flex-row lg:justify-between lg:items-end' },
+  //     header: {
+  //       headerClass: 'text-left',
+  //       title: 'GET IN TOUCH NOW',
+  //       titleClass: 'text-[clamp(22px,20.4986px+0.3820vw,26px)] font-bold pb-2',
+  //       descriptionIntro: 'Phone: +62 21 8285 0201',
+  //       description: 'Mobile (WhatsApp): +62 877 8787 3352',
+  //       descriptionOutro: 'Email: sales@tuilogis.com',
+  //     },
+  //   },
+  //   detail: {
+  //     header: {
+  //       headerClass: 'text-left',
+  //       descriptionIntro: 'Address: Jl. Padang No. 5A, Kel. Pasar Manggis',
+  //       descriptionOutro: 'Kec. Setiabudi Jakarta Selatan, Indonesia',
+  //     },
+  //   },
+  // },
+  // /** 13. TEST SECTION – Legacy TUI, dinonaktifkan */
+  // test: {
+  //   section: {
+  //     layout: {
+  //       id: 'fittest',
+  //       sectionElement: 'header',
+  //       stackClass: 'gap-[clamp(60px,14.9570px+11.4613vw,180px)] text-primary-400',
+  //       containerClass: 'bg-blue',
+  //     },
+  //   },
+  // },
 };

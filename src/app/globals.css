@@ -8,8 +8,9 @@
 
 :root {
   --container-figma-max-width: 1440px;
-  --section-py-mobile: 2.5rem;
-  --section-py-desktop: 5rem;
+  /* vertical padding token */ 
+  --section-py-mobile: 16px; /*  */
+  --section-py-desktop: 16px; /* */
   /* horizontal padding token */ 
   --container-px-mobile: 1rem; /* 16px */
   --container-px-desktop: 7.5rem; /* 120px */
@@ -20,7 +21,8 @@
   --primary-300: #2e745d;
   --primary-400: #50836a;
   --primary-500: #146951;
-  --background: oklch(1 0 0);
+  /* --background: oklch(1 0 0); */
+  --background: #030d0a;
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
@@ -154,7 +156,7 @@
 }
 
 @utility page-section {
-  @apply min-h-screen xl:min-h-auto py-(--section-py-mobile) lg:py-(--section-py-desktop);
+  @apply py-(--section-py-mobile) lg:py-(--section-py-desktop);
 }
 
 @utility custom-container {

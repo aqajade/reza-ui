@@ -25,6 +25,7 @@ export type LayoutConfig = {
   id?: string; //id superoptional u/ case animation aja
   stackDirection?: 'col' | 'row';
   stackClass?: string;
+  stackElement?: 'div' | 'main' | 'header' | 'footer' | 'section' | 'aside';
 };
 
 export type HeaderConfig = {

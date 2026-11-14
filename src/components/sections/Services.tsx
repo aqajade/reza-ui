@@ -33,7 +33,7 @@ export function Services({ className }: ServicesProps) {
               //   key={index}
               //   className={section.card.layout.stackClass}
               // >
-              <CardStack key={index} className={section.card.layout.stackClass}>
+              <CardStack key={index} className={section.card?.layout?.stackClass}>
                 {/* Distribusi 3 teks internal kartu (Mendukung auto-highlight span) */}
                 <SectionHeader
                   config={{

@@ -50,25 +50,46 @@ export type LandingPageData = {
    * di-hardcode di dalam komponen agar tetap Server Component (zero JS klien
    * untuk konten statis). Key ini WAJIB terdaftar di LandingPageSectionId.
    */
-  landingItqanMath: Record<string, never>;
+  landingItqanMath: {
+    section: SectionConfig & {
+      layout: LayoutConfig & {
+        sectionElement: 'section';
+        sectionClass: string;
+        containerClass: string;
+        stackClass: string;
+        stackElement: 'main';
+      };
+      header: HeaderConfig & {
+        title: string;
+        description: string;
+      };
+    };
+  };
 
-  headerItqanMath: { //types sesuai nama section camelCase
-    section: SectionConfig & { //flexbox terluar (row, membagi dua untuk logo+title sisi kiri dan badge sisi kanan)
-      layout: LayoutConfig & { //pengaturan elemen semantik sekiranya dibutuhkan, direction nya (by default udah col tambahin stackDirection kalau emang butuh row), containerClass u/ atur max-width sekiranya beda dari ukuran lainnya (karena ini elemen semantik yg bukan div jadi aman nya dikasih aja biar kita lebih aware nanti tolong bantu catat di note /.ai ya terkait section untuk halaman yg bukan div wajibkan aja containerClass karena gatau apa butuh w-full atau gimana nya) 
+  headerItqanMath: {
+    //types sesuai nama section camelCase
+    section: SectionConfig & {
+      //flexbox terluar (row, membagi dua untuk logo+title sisi kiri dan badge sisi kanan)
+      layout: LayoutConfig & {
+        //pengaturan elemen semantik sekiranya dibutuhkan, direction nya (by default udah col tambahin stackDirection kalau emang butuh row), containerClass u/ atur max-width sekiranya beda dari ukuran lainnya (karena ini elemen semantik yg bukan div jadi aman nya dikasih aja biar kita lebih aware nanti tolong bantu catat di note /.ai ya terkait section untuk halaman yg bukan div wajibkan aja containerClass karena gatau apa butuh w-full atau gimana nya)
         stackDirection: 'row';
         sectionElement: 'header';
-        sectionClass: string
+        sectionClass: string;
         containerClass: string;
       };
-      header: HeaderConfig & { //ini untuk value di badge nya
+      header: HeaderConfig & {
+        //ini untuk value di badge nya
         title: string;
       };
     };
-    content: BaseLayoutConfig & { //ini untuk scope logo+title
-      layout: LayoutConfig & { //atur row krn logo+title kirikanan
+    content: BaseLayoutConfig & {
+      //ini untuk scope logo+title
+      layout: LayoutConfig & {
+        //atur row krn logo+title kirikanan
         stackDirection: 'row';
       };
-      header: HeaderConfig & { //untuk tulisan ItqanMath pake title tulisan bawahnya pakai desc, aku udah sediakan title subTitle descriptionIntro description descriptionOutro, jadi kalau butuh 5 jenis teks yg beda dalam 1 scope tinggal diatur aja
+      header: HeaderConfig & {
+        //untuk tulisan ItqanMath pake title tulisan bawahnya pakai desc, aku udah sediakan title subTitle descriptionIntro description descriptionOutro, jadi kalau butuh 5 jenis teks yg beda dalam 1 scope tinggal diatur aja
         title: string;
         description: string;
       };
@@ -77,9 +98,13 @@ export type LandingPageData = {
   };
 
   footerItqanMath: {
-    section: BaseLayoutConfig & {
+    section: SectionConfig & {
+      layout: LayoutConfig & {
+        sectionElement: 'footer';
+        sectionClass: string;
+      };
       header: HeaderConfig & {
-        title: string;
+        description: string;
       };
     };
   };
@@ -215,42 +240,43 @@ export type LandingPageData = {
   //   };
   // };
 
-  // /** 11. Footer Section: Area CTA Hubungi Kami, Kredit Hak Cipta, dan Detail Alamat Kontak */
-  footer: {
-    section: SectionConfig & {
-      layout: LayoutConfig & {
-        sectionElement: 'footer';
-      };
-      header: HeaderConfig & {
-        title: string;
-        subTitle: string;
-      };
-    };
-    content: BaseLayoutConfig & {
-      header: HeaderConfig & {
-        title: string;
-        descriptionIntro: string;
-        description: string;
-        descriptionOutro: string;
-      };
-    };
-    detail: LayoutConfig & {
-      header: HeaderConfig & {
-        descriptionIntro: string;
-        descriptionOutro: string;
-      };
-    };
-  };
+  // /** 11. Footer Section: Legacy TUI – dinonaktifkan */
+  // footer: {
+  //   section: SectionConfig & {
+  //     layout: LayoutConfig & {
+  //       sectionElement: 'footer';
+  //     };
+  //     header: HeaderConfig & {
+  //       title: string;
+  //       subTitle: string;
+  //     };
+  //   };
+  //   content: BaseLayoutConfig & {
+  //     header: HeaderConfig & {
+  //       title: string;
+  //       descriptionIntro: string;
+  //       description: string;
+  //       descriptionOutro: string;
+  //     };
+  //   };
+  //   detail: LayoutConfig & {
+  //     header: HeaderConfig & {
+  //       descriptionIntro: string;
+  //       descriptionOutro: string;
+  //     };
+  //   };
+  // };
 
-  test: {
-    section: SectionConfig & {
-      layout: {
-        sectionElement: 'header';
-        containerClass: string;
-        stackClass: string;
-      };
-    };
-  };
+  // test: Legacy TUI – dinonaktifkan
+  // test: {
+  //   section: SectionConfig & {
+  //     layout: {
+  //       sectionElement: 'header';
+  //       containerClass: string;
+  //       stackClass: string;
+  //     };
+  //   };
+  // };
 };
 
 // Gabungan SSOT untuk halaman lengkap:

@@ -41,13 +41,27 @@ export type SectionComponentProps<TData = never> = {
 /**
  * Visual registry Land ItqanMath — komponen PEMBUNGKUS tipis yang menelan
  * `data` kosong agar LandingItqanMath bebas dari noise kontrak renderer.
- * Tempat aman bila kelak ada props tambahan (mis. onStart) yang perlu
- * disuntikkan dari sisi server.
+ * headerData & footerData disuntikkan dari page.data di level renderer
+ * (satu-satunya tempat yang sah membaca multi-section data sekaligus —
+ * sesuai ADR 5: section sendiri DILARANG import landingPageData).
  */
 function LandingItqanMathSection({
+  data,
   className,
-}: SectionComponentProps<LandingPageData['landingItqanMath']>) {
-  return <LandingItqanMath data={{}} className={className} />;
+  headerData,
+  footerData,
+}: SectionComponentProps<LandingPageData['landingItqanMath']> & {
+  headerData?: LandingPageData['headerItqanMath'];
+  footerData?: LandingPageData['footerItqanMath'];
+}) {
+  return (
+    <LandingItqanMath
+      data={data}
+      headerData={headerData}
+      footerData={footerData}
+      className={className}
+    />
+  );
 }
 
 /**
@@ -90,11 +104,28 @@ export function PageRenderer({ page }: PageRendererProps) {
           return null;
         }
 
-        return createElement(SectionComponent, {
+        // Props dasar yang berlaku untuk semua section
+        const baseProps = {
           key: section.id,
           data: data[section.id],
           className: section.className,
-        });
+        };
+
+        // Props tambahan khusus LandingItqanMath: suntikkan data sibling section
+        // di sini (satu-satunya tempat sah membaca multi-section — ADR 5).
+        if (section.id === 'landingItqanMath') {
+          return (
+            <LandingItqanMathSection
+              key={section.id}
+              data={data.landingItqanMath}
+              headerData={data.headerItqanMath}
+              footerData={data.footerItqanMath}
+              className={section.className}
+            />
+          );
+        }
+
+        return createElement(SectionComponent, baseProps);
       })}
     </>
   );

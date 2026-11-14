@@ -6,6 +6,8 @@ import type { LayoutConfig } from '@/types/layout/base';
 
 export type StackConfigInput = LayoutConfig | { layout?: LayoutConfig };
 
+export const StackLayout = BaseStack;
+
 export type BaseStackProps = React.ComponentProps<'div'> & {
   config?: StackConfigInput;
   stackDirection?: 'col' | 'row';
@@ -24,11 +26,12 @@ export function BaseStack({
     config && 'layout' in config ? (config.layout as LayoutConfig) : (config as LayoutConfig);
   const direction = resolvedLayout?.stackDirection || stackDirection;
   const resolvedClass = resolvedLayout?.stackClass || stackClass;
+  const Element = (resolvedLayout?.stackElement || 'div') as React.ElementType;
 
   return (
-    <div
+    <Element
       className={cn(
-        'flex',
+        'flex min-h-0',
         direction === 'col' ? 'flex-col' : 'flex-row',
         'stack-layout',
         resolvedClass,
@@ -37,6 +40,6 @@ export function BaseStack({
       {...props}
     >
       {children}
-    </div>
+    </Element>
   );
 }
