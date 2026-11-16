@@ -22,7 +22,7 @@ export const landingPageData: LandingPageData = {
         containerClass:
           'flex flex-col h-full justify-between',  
         stackClass:
-          'flex flex-col justify-between gap-4 rounded-2xl border border-emerald-500/30 bg-[#0B2B22]/85 p-4 shadow-2xl backdrop-blur-md sm:p-5',
+          'relative z-10 flex flex-col justify-between gap-4 rounded-2xl border border-emerald-500/30 bg-[#0B2B22]/85 p-4 shadow-2xl backdrop-blur-md sm:p-5',
         stackElement:
           'main',
       },
@@ -47,13 +47,19 @@ export const landingPageData: LandingPageData = {
         sectionVariant: 'sub',
         stackDirection: 'row',
         sectionElement: 'header',
-        containerClass: 'w-full flex items-center justify-between rounded-xl border border-[#123D31]/90 bg-[#0B2B22]/85 px-3 py-2 shadow-md backdrop-blur-md',
+        containerClass: 'relative z-30 w-full flex items-center justify-between rounded-xl border border-[#123D31]/90 bg-[#0B2B22]/85 px-3 py-2 shadow-md backdrop-blur-md',
         stackClass: 'flex w-full items-center justify-between',
       },
       header: {
         title: 'Fase Fondasi',
         headerClass:
           'inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full font-sans bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-[10px] font-semibold tracking-wide select-none',
+      },
+    },
+    detail: {
+      layout: {
+        stackDirection: 'row',
+        stackClass: 'flex items-center gap-2',
       },
     },
     content: {
@@ -64,7 +70,7 @@ export const landingPageData: LandingPageData = {
       header: {
         title: 'Itqan[Math](text-emerald-400)',
         titleClass: 'block text-base leading-none font-extrabold tracking-tight text-white',
-        description: 'Modul 01: Penjumlahan',
+        description: 'v0.1.0-alpha',
         descriptionClass: 'text-[9px] font-medium tracking-wider text-emerald-300/80 uppercase',
       },
       image: {
@@ -95,50 +101,6 @@ export const landingPageData: LandingPageData = {
       },
     },
   },
-
-  // landingItqanMath: {
-  //   layout: {
-  //     id: 'itqan-generator',
-  //     sectionElement: 'section',
-  //   },
-  //   brand: {
-  //     logoSrc: '/icons/logo.svg',
-  //     title: 'Itqan',
-  //     highlight: 'Math',
-  //     subtitle: 'Modul 01: Penjumlahan',
-  //     badgeText: 'Fase Fondasi',
-  //   },
-  //   topic: {
-  //     iconSymbol: '+',
-  //     title: 'Latihan Penjumlahan',
-  //     description:
-  //       'Bangun ketelitian dan kecepatan berhitung dasar secara bertahap.',
-  //   },
-  //   form: {
-  //     totalLabel: 'Total Soal',
-  //     totalHint: 'Pilih jumlah',
-  //     defaultTotal: 10,
-  //     totalOptions: [
-  //       { label: '5', value: 5 },
-  //       { label: '10', value: 10 },
-  //       { label: '15', value: 15 },
-  //       { label: '20', value: 20 },
-  //     ],
-  //     timerLabel: 'Batas Waktu (Timer)',
-  //     timerHint: 'Opsional',
-  //     defaultTimer: 'off',
-  //     timerOptions: [
-  //       { label: 'Santai', value: 'off' },
-  //       { label: '5 Mnt', value: '5' },
-  //       { label: '10 Mnt', value: '10' },
-  //       { label: '15 Mnt', value: '15' },
-  //     ],
-  //     submitText: 'Mulai Latihan Penjumlahan',
-  //   },
-  //   footer: {
-  //     text: '© 2026 ItqanMath • Belajar Bertahap Tanpa Iklan',
-  //   },
-  // },
 
   header: {
     section: {

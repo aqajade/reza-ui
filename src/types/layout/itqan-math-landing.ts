@@ -18,7 +18,7 @@ export type ItqanMathLandingData = BaseLayoutConfig & {
     logoSrc: string | StaticImageData;
     title: string; // "Itqan"
     highlight: string; // "Math"
-    subtitle: string; // "Modul 01: Penjumlahan"
+    subtitle: string; // "Versi Aplikasi"
     badgeText: string; // "Fase Fondasi"
   };
 

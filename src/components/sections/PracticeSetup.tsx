@@ -12,10 +12,10 @@
 
 import * as React from 'react';
 
-import { ButtonGroup, type ButtonGroupOption } from '@/components/ui/ButtonGroup';
+import { ButtonGroup, type ButtonGroupOption } from '@/components/layout/button/ButtonGroup';
 import { cn } from '@/lib/utils';
 
-import { Button } from './button';
+import { Button } from '../layout/button/button';
 
 export type TotalQuestion = 5 | 10 | 15 | 20;
 export type TimerOption = 'off' | '5' | '10' | '15';

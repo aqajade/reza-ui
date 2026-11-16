@@ -5,7 +5,7 @@ Gunakan prompt di bawah ini saat kamu meminta Gemini merancang fitur baru atau t
 ---
 
 ```markdown
-Halo Gemini! Saya ingin kita merancang prototipe fitur untuk project **ItqanMath** yang dibangun di atas arsitektur **reza-ui** (Next.js 16 App Router, React 19, Tailwind CSS v4, TypeScript Strict, Doktrin rscoclsddsddryzaapfpsmbip).
+Halo Gemini! Saya ingin kita merancang prototipe fitur untuk project **ItqanMath** yang dibangun di atas arsitektur **reza-ui** (Next.js 16 App Router, React 19, Tailwind CSS v4, TypeScript Strict, Doktrin rscoClsDdSdDryZaapeiFpSMbBip).
 
 Berikut adalah konteks arsitektur dan aturan main di repository kami (dari folder `.ai/`):
 [Lampirkan/Tempel isi berkas .ai/ARCHITECTURE.md, .ai/DECISIONS.md, dan .ai/WORKFLOW.md di sini jika diperlukan]

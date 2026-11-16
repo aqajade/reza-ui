@@ -6,7 +6,7 @@ import { DataInjector } from '@/components/layout/DataInjector';
 import { PageSection } from '@/components/layout/PageSection';
 import { FooterItqanMath } from '@/components/sections/FooterItqanMath';
 import { HeaderItqanMath } from '@/components/sections/HeaderItqanMath';
-import { PracticeSetup } from '@/components/ui/PracticeSetup';
+import { PracticeSetup } from '@/components/sections/PracticeSetup';
 import type { LandingPageData } from '@/types/layout/landing-page';
 
 import { SectionHeader } from '../layout/header/SectionHeader';

@@ -94,6 +94,10 @@ export type LandingPageData = {
       };
       image: RawImageConfig; //ini krn butuh gambar u/ logo nya pake props yg ini
     };
+    detail?: BaseLayoutConfig & {
+      layout?: LayoutConfig;
+      header?: HeaderConfig;
+    };
   };
 
   footerItqanMath: {
