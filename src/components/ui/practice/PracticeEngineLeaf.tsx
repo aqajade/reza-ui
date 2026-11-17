@@ -6,11 +6,12 @@
 //   - ZAAPEI: Zero interface, zero any/as, zero layout hardcode.
 //   - DD: Semua data dari SSOT (itqanDictionary, itqanModules, itqanDefaultCombinations).
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
 
 import { itqanDictionary } from '@/data/itqan-math/dictionary';
 import { itqanDefaultCombinations } from '@/data/itqan-math/digits';
-import { itqanModules } from '@/data/itqan-math/modules';
+import { itqanModulesMap } from '@/data/itqan-math/modules';
 import type {
   AppState,
   DigitConfig,
@@ -53,6 +54,9 @@ const DEFAULT_QUIZ_CONFIG: QuizConfig = {
 export function PracticeEngineLeaf({
   initialLanguage = 'en',
 }: PracticeEngineLeafProps) {
+  const searchParams = useSearchParams();
+  const urlLang = searchParams?.get('lang') === 'id' ? 'id' : 'en';
+
   // --- Lifecycle State ---
   const [appState, setAppState] = useState<AppState>('home-menu');
 
@@ -60,7 +64,14 @@ export function PracticeEngineLeaf({
   const [activeModuleId, setActiveModuleId] = useState<ModuleId>('addition');
 
   // --- Language State ---
-  const [language] = useState<Language>(initialLanguage);
+  const [language, setLanguage] = useState<Language>(initialLanguage ?? urlLang);
+
+  // Sinkronkan bahasa saat parameter URL berubah
+  useEffect(() => {
+    if (urlLang) {
+      setLanguage(urlLang);
+    }
+  }, [urlLang]);
 
   // --- Quiz Config State ---
   const [config, setConfig] = useState<QuizConfig>(DEFAULT_QUIZ_CONFIG);
@@ -68,10 +79,11 @@ export function PracticeEngineLeaf({
   // --- Digit Modal State ---
   const [isDigitModalOpen, setIsDigitModalOpen] = useState<boolean>(false);
 
-  // --- Derived: active translation + active module ---
-  const t = itqanDictionary[language];
+  // --- Derived: active translation + active module from multilingual SSOT map ---
+  const t = itqanDictionary[language] ?? itqanDictionary.en;
+  const currentModules = itqanModulesMap[language] ?? itqanModulesMap.en;
   const activeModule =
-    itqanModules.find((m) => m.id === activeModuleId) ?? itqanModules[0];
+    currentModules.find((m) => m.id === activeModuleId) ?? currentModules[0];
 
   // ==========================================
   // Handlers
@@ -117,7 +129,7 @@ export function PracticeEngineLeaf({
         <HomeMenuView
           lang={language}
           t={t}
-          modules={itqanModules}
+          modules={currentModules}
           onSelectModule={handleSelectModule}
         />
       )}

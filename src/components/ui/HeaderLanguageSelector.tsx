@@ -4,7 +4,8 @@
 // Sesuai Doktrin: rscoClsDdSdDryZaapeiFpSMbBip — CLS (Client Leaf System), Zero interface, Zero any/as
 // ⚠️ Stacking-Context Safe: Tidak menggunakan backdrop fixed inset-0 yang menjebak event pointer
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useTransition } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import type { Language, LanguageOption } from '@/types/math/itqan-math';
 
 // ==========================================
@@ -65,17 +66,24 @@ export type HeaderLanguageSelectorProps = {
 // ==========================================
 
 export default function HeaderLanguageSelector({
-  currentLang = 'en',
+  currentLang,
   onLanguageChange,
 }: HeaderLanguageSelectorProps) {
-  const [activeLang, setActiveLang] = useState<Language>(currentLang);
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const [, startTransition] = useTransition();
+
+  const urlLang = searchParams?.get('lang') === 'id' ? 'id' : 'en';
+  const effectiveLang: Language = currentLang ?? urlLang;
+
+  const [activeLang, setActiveLang] = useState<Language>(effectiveLang);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Sinkronisasi prop jika di-pass dari state parent
+  // Sinkronisasi jika URL atau props berubah
   useEffect(() => {
-    setActiveLang(currentLang);
-  }, [currentLang]);
+    setActiveLang(effectiveLang);
+  }, [effectiveLang]);
 
   // Outside click listener berbasis useRef (Bebas Stacking Context trap)
   useEffect(() => {
@@ -105,6 +113,16 @@ export default function HeaderLanguageSelector({
     setActiveLang(code);
     setIsOpen(false);
     onLanguageChange?.(code);
+
+    // Sinkronkan ke URL SearchParams tanpa reload penuh (RSC transition)
+    const currentParam = searchParams?.get('lang');
+    if (currentParam !== code) {
+      const params = new URLSearchParams(searchParams?.toString() ?? '');
+      params.set('lang', code);
+      startTransition(() => {
+        router.push(`/?${params.toString()}`, { scroll: false });
+      });
+    }
   };
 
   return (

@@ -9,110 +9,113 @@ import processImg from '@/../public/images/process/processs.png';
 import tailoredImg from '@/../public/images/tailored/tailoredd.png';
 import teamImg from '@/../public/images/team/team.png';
 import trackingImg from '@/../public/images/tracking/trackingg.png';
-import { LandingPageData } from '@/types/layout/landing-page';
-// import { RawImageConfig } from '@/types/layout/page-config';
-export const landingPageData: LandingPageData = {
-  landingItqanMath: {
-    section: {
-      layout: {
-        id: 'landing-itqan-math',
-        sectionElement: 'section',
-        sectionClass:
-          'page-section h-dvh',
-        containerClass:
-          'flex flex-col h-full justify-between',  
-        stackClass:
-          'relative z-10 flex flex-col justify-between gap-4 rounded-2xl border border-emerald-500/30 bg-[#0B2B22]/85 p-4 shadow-2xl backdrop-blur-md sm:p-5',
-        stackElement:
-          'main',
-      },
-      header: {
-        headerClass: 'flex flex-col items-center gap-1 text-center',
-        descriptionIntro: '+',
-        descriptionIntroClass:
-          'mb-1 inline-flex h-10 w-10 items-center justify-center rounded-xl border border-emerald-500/20 bg-emerald-500/10 text-emerald-400 text-2xl leading-none font-bold',
-        title: 'Latihan Penjumlahan',
-        titleClass: 'text-lg font-extrabold tracking-wide text-white sm:text-xl',
-        description:
-          'Bangun ketelitian dan kecepatan berhitung dasar secara bertahap.',
-        descriptionClass: 'text-xs text-gray-300',
-      },
-    },
-  },
+import { itqanDictionary } from '@/data/itqan-math/dictionary';
+import type { Language } from '@/types/math/itqan-math';
+import type { LandingPageData } from '@/types/layout/landing-page';
 
-  headerItqanMath: {
-    section: {
-      layout: {
-        id: 'header-itqan-math',
-        sectionVariant: 'sub',
-        stackDirection: 'row',
-        sectionElement: 'header',
-        containerClass: 'relative z-30 w-full flex items-center justify-between rounded-xl border border-[#123D31]/90 bg-[#0B2B22]/85 px-3 py-2 shadow-md backdrop-blur-md',
-        stackClass: 'flex w-full items-center justify-between',
-      },
-      header: {
-        title: 'Fase Fondasi',
-        headerClass:
-          'inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full font-sans bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-[10px] font-semibold tracking-wide select-none',
-      },
-    },
-    detail: {
-      layout: {
-        stackDirection: 'row',
-        stackClass: 'flex items-center gap-2',
-      },
-    },
-    content: {
-      layout: {
-        stackDirection: 'row',
-        stackClass: 'flex items-center space-x-2',
-      },
-      header: {
-        title: 'Itqan[Math](text-emerald-400)',
-        titleClass: 'block text-base leading-none font-extrabold tracking-tight text-white',
-        description: 'v0.1.0-alpha',
-        descriptionClass: 'text-[9px] font-medium tracking-wider text-emerald-300/80 uppercase',
-      },
-      image: {
-        src: '/icons/logo.svg',
-        alt: 'ItqanMath Logo',
-        minWidth: 12,
-        maxWidth: 12,
-        aspectRatio: '250/417',
-        priority: true,
-        containerClass:
-          '',
-        elementClass: '',
-      },
-    },
-  },
+export function getLandingPageData(lang: Language = 'en'): LandingPageData {
+  const t = itqanDictionary[lang] ?? itqanDictionary.en;
 
-  footerItqanMath: {
-    section: {
-      layout: {
-        id: 'footer-itqan-math',
-        sectionVariant: 'sub',
-        sectionElement: 'footer',
-        sectionClass: 'text-center', 
-      },
-      header: {
-        description: '© 2026 ItqanMath • وَقْفٌ لِلهِ تَعَالَى',
-        descriptionClass: 'text-[10px] text-gray-400',
+  return {
+    landingItqanMath: {
+      section: {
+        layout: {
+          id: 'landing-itqan-math',
+          sectionElement: 'section',
+          sectionClass: 'page-section h-dvh',
+          containerClass: 'flex flex-col h-full justify-between',
+          stackClass:
+            'relative z-10 flex flex-col justify-between gap-4 rounded-2xl border border-emerald-500/30 bg-[#0B2B22]/85 p-4 shadow-2xl backdrop-blur-md sm:p-5',
+          stackElement: 'main',
+        },
+        header: {
+          headerClass: 'flex flex-col items-center gap-1 text-center',
+          descriptionIntro: '+',
+          descriptionIntroClass:
+            'mb-1 inline-flex h-10 w-10 items-center justify-center rounded-xl border border-emerald-500/20 bg-emerald-500/10 text-emerald-400 text-2xl leading-none font-bold',
+          title: t.home.title,
+          titleClass: 'text-lg font-extrabold tracking-wide text-white sm:text-xl',
+          description: t.home.subTitle,
+          descriptionClass: 'text-xs text-gray-300',
+        },
       },
     },
-  },
 
-  header: {
-    section: {
-      layout: {
-        stackElement: 'header',
+    headerItqanMath: {
+      section: {
+        layout: {
+          id: 'header-itqan-math',
+          sectionVariant: 'sub',
+          stackDirection: 'row',
+          sectionElement: 'header',
+          containerClass:
+            'relative z-30 w-full flex items-center justify-between rounded-xl border border-[#123D31]/90 bg-[#0B2B22]/85 px-3 py-2 shadow-md backdrop-blur-md',
+          stackClass: 'flex w-full items-center justify-between',
+        },
+        header: {
+          title: t.header.homeBadge,
+          headerClass:
+            'inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full font-sans bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-[10px] font-semibold tracking-wide select-none',
+        },
+      },
+      detail: {
+        layout: {
+          stackDirection: 'row',
+          stackClass: 'flex items-center gap-2',
+        },
+      },
+      content: {
+        layout: {
+          stackDirection: 'row',
+          stackClass: 'flex items-center space-x-2',
+        },
+        header: {
+          title: 'Itqan[Math](text-emerald-400)',
+          titleClass:
+            'block text-base leading-none font-extrabold tracking-tight text-white',
+          description: 'v0.1.0-alpha',
+          descriptionClass:
+            'text-[9px] font-medium tracking-wider text-emerald-300/80 uppercase',
+        },
+        image: {
+          src: '/icons/logo.svg',
+          alt: 'ItqanMath Logo',
+          minWidth: 12,
+          maxWidth: 12,
+          aspectRatio: '250/417',
+          priority: true,
+          containerClass: '',
+          elementClass: '',
+        },
       },
     },
-  },
 
-  /** 2. HERO SECTION (JANGAN DIUTAK-ATIK) */
-  hero: {
-    section: {
+    footerItqanMath: {
+      section: {
+        layout: {
+          id: 'footer-itqan-math',
+          sectionVariant: 'sub',
+          sectionElement: 'footer',
+          sectionClass: 'text-center',
+        },
+        header: {
+          description: t.footer.blessing,
+          descriptionClass: 'text-[10px] text-gray-400',
+        },
+      },
+    },
+
+    header: {
+      section: {
+        layout: {
+          stackElement: 'header',
+        },
+      },
+    },
+
+    /** 2. HERO SECTION (JANGAN DIUTAK-ATIK) */
+    hero: {
+      section: {
       layout: {
         id: 'hero',
         stackDirection: 'col',
@@ -561,4 +564,7 @@ export const landingPageData: LandingPageData = {
   //     },
   //   },
   // },
-};
+  };
+}
+
+export const landingPageData: LandingPageData = getLandingPageData('en');
