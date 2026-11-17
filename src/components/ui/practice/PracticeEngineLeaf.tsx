@@ -165,6 +165,7 @@ export function PracticeEngineLeaf({
       {/* MODAL: Digit Customization (dipasang di root leaf agar z-index aman) */}
       {isDigitModalOpen && (
         <DigitModalLeaf
+          lang={language}
           t={t}
           digitConfig={config.digitConfig}
           onSave={handleSaveDigitConfig}

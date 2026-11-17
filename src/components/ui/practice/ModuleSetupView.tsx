@@ -18,6 +18,7 @@ import type {
   TranslationSchema,
 } from '@/types/math/itqan-math';
 import { Button } from '@/components/layout/button/button';
+import { itqanDigitPresetsMap } from '@/data/itqan-math/digits';
 import { cn } from '@/lib/utils';
 
 // ==========================================
@@ -96,6 +97,7 @@ function PillButton<T extends string | number>({
 // ==========================================
 
 export function ModuleSetupView({
+  lang = 'en',
   t,
   module,
   config,
@@ -120,10 +122,14 @@ export function ModuleSetupView({
   // ==========================================
   // Digit display: label untuk tombol Digit Specification
   // ==========================================
+  const currentPresets = itqanDigitPresetsMap[lang ?? 'en'] ?? itqanDigitPresetsMap.en;
+  const activePreset = currentPresets.find((p) => p.id === config.digitConfig.presetId);
+
   const digitBtnLabel =
     config.digitConfig.mode === 'preset'
-      ? config.digitConfig.presetId.charAt(0).toUpperCase() +
-        config.digitConfig.presetId.slice(1)
+      ? activePreset?.label ??
+        config.digitConfig.presetId.charAt(0).toUpperCase() +
+          config.digitConfig.presetId.slice(1)
       : (() => {
           const activeCount = config.digitConfig.combinations.filter((c) => c.enabled).length;
           return `${activeCount} ${t.setup.combosActive}`;

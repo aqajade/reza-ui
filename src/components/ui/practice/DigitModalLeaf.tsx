@@ -9,13 +9,17 @@
 
 import { useState } from 'react';
 import { calculateAutoBalance } from '@/lib/math-engine/addition-generator';
-import { itqanDigitPresets } from '@/data/itqan-math/digits';
+import {
+  itqanDigitCombinationsMap,
+  itqanDigitPresetsMap,
+} from '@/data/itqan-math/digits';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/layout/button/button';
 import type {
   DigitCombinationItem,
   DigitConfig,
   DigitPresetId,
+  Language,
   TranslationSchema,
 } from '@/types/math/itqan-math';
 
@@ -26,6 +30,7 @@ import type {
 type DigitModalTab = 'preset' | 'custom';
 
 export type DigitModalLeafProps = {
+  lang?: Language;
   t: TranslationSchema;
   digitConfig: DigitConfig;
   onSave: (newDigitConfig: DigitConfig) => void;
@@ -36,15 +41,39 @@ export type DigitModalLeafProps = {
 // DigitModalLeaf Component
 // ==========================================
 
-export function DigitModalLeaf({ t, digitConfig, onSave, onCancel }: DigitModalLeafProps) {
+export function DigitModalLeaf({
+  lang = 'en',
+  t,
+  digitConfig,
+  onSave,
+  onCancel,
+}: DigitModalLeafProps) {
+  // Preset list & localized combinations dictionary
+  const currentPresets = itqanDigitPresetsMap[lang] ?? itqanDigitPresetsMap.en;
+  const localizedCombinationsRef =
+    itqanDigitCombinationsMap[lang] ?? itqanDigitCombinationsMap.en;
+
   // Tab aktif: 'preset' | 'custom'
   const [activeTab, setActiveTab] = useState<DigitModalTab>(digitConfig.mode);
 
   // Temp config — perubahan di modal TIDAK merusak config utama sampai Save ditekan
-  const [tempPresetId, setTempPresetId] = useState<DigitPresetId>(digitConfig.presetId);
-  const [tempCombinations, setTempCombinations] = useState<DigitCombinationItem[]>(
-    digitConfig.combinations,
+  const [tempPresetId, setTempPresetId] = useState<DigitPresetId>(
+    digitConfig.presetId,
   );
+  const [tempCombinations, setTempCombinations] = useState<
+    DigitCombinationItem[]
+  >(() => {
+    // Sinkronisasi teks label & deskripsi kombinasi sesuai bahasa aktif
+    return digitConfig.combinations.map((c) => {
+      const localized = localizedCombinationsRef.find((ref) => ref.key === c.key);
+      return {
+        ...c,
+        label: localized?.label ?? c.label,
+        maxDigitDescription:
+          localized?.maxDigitDescription ?? c.maxDigitDescription,
+      };
+    });
+  });
 
   // ==========================================
   // Kalkulasi Validasi: total porsi kombinasi aktif
@@ -165,7 +194,7 @@ export function DigitModalLeaf({ t, digitConfig, onSave, onCancel }: DigitModalL
         {/* Tab: Instant Presets */}
         {activeTab === 'preset' && (
           <div className="flex flex-col gap-1.5 overflow-y-auto min-h-0">
-            {itqanDigitPresets.map((preset) => (
+            {currentPresets.map((preset) => (
               <button
                 key={preset.id}
                 type="button"
