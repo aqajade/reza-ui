@@ -8,7 +8,6 @@ import { FooterItqanMath } from '@/components/sections/FooterItqanMath';
 import { HeaderItqanMath } from '@/components/sections/HeaderItqanMath';
 import type { LandingPageData } from '@/types/layout/landing-page';
 
-import { SectionHeader } from '../layout/header/SectionHeader';
 import { SectionStack } from '../layout/stack/SectionStack';
 import PracticeEngineLeaf from '../ui/practice/PracticeEngineLeaf';
 
@@ -53,12 +52,9 @@ export function LandingItqanMath({
           {/* 2. Main Card Container (Glass Card Form Setup)
               Injeksi dari data.section (konteks default landingItqanMath). */}
           <SectionStack>
-            {/* Icon & Judul Topik Utama */}
-            <SectionHeader />
             {/* 🌱 CLIENT BOUNDARY — satu-satunya daun yang "use client".
-                  Form ini di-serialisasi KOSONG ke browser: semua label &
-                  opsi dirender di server sebagai children. JS klien hanya
-                  memuat state total/timer. */}
+                  Lifecycle dinamis (HomeMenu, ModuleSetup, Practicing, Result)
+                  terisolasi di daun ini dengan header kontekstual per state. */}
             <PracticeEngineLeaf />
           </SectionStack>
           {/* 3. Footer Modular

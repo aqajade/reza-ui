@@ -74,7 +74,7 @@ function getScopePayload(
  * 3. detail   -> DetailStack, DetailHeader, ImageContainer
  * 4. card     -> CardStack, CardHeader, ImageContainer
  * 
- * Asas Tertinggi: rscoclsddsddryzaafpsmbip (Zero Any & As)
+ * Asas Tertinggi: rscoClsDdSdDryZaapeiFpSMBip (Zero Any & As)
  */
 export function DataInjector({ data, slots, children }: DataInjectorProps) {
   if (!data) return <>{children}</>;

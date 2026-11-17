@@ -1,13 +1,13 @@
 'use client';
 // src/components/ui/practice/PracticeEngineLeaf.tsx
 // Core Client Leaf — Lifecycle Controller ItqanMath
-// Doktrin: rscoClsDdSdDryZaapeiFpSMbBip
+// Doktrin: rscoClsDdSdDryZaapeiFpSMBip
 //   - CLS: 'use client' murni terisolasi di daun interaktif ini.
 //   - ZAAPEI: Zero interface, zero any/as, zero layout hardcode.
 //   - DD: Semua data dari SSOT (itqanDictionary, itqanModules, itqanDefaultCombinations).
 
-import { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 import { itqanDictionary } from '@/data/itqan-math/dictionary';
 import { itqanDefaultCombinations } from '@/data/itqan-math/digits';
@@ -64,7 +64,9 @@ export function PracticeEngineLeaf({
   const [activeModuleId, setActiveModuleId] = useState<ModuleId>('addition');
 
   // --- Language State ---
-  const [language, setLanguage] = useState<Language>(initialLanguage ?? urlLang);
+  const [language, setLanguage] = useState<Language>(
+    initialLanguage ?? urlLang
+  );
 
   // Sinkronkan bahasa saat parameter URL berubah
   useEffect(() => {

@@ -1,20 +1,19 @@
 'use client';
 // src/components/ui/practice/DigitModalLeaf.tsx
 // Sub-leaf: Modal Kustomisasi Spesifikasi Digit
-// Doktrin: rscoClsDdSdDryZaapeiFpSMbBip
+// Doktrin: rscoClsDdSdDryZaapeiFpSMBip
 //   - CLS: 'use client' — daun interaktif murni (tab state, temp state, validasi).
 //   - ZAAPEI: Zero interface, zero any/as, zero raw HTML wrapper di luar modal shell.
 //   - DD: Semua data preset dari SSOT (itqanDigitPresets, itqanDefaultCombinations).
 //   - 1-Viewport Safe: modal max-h-[85dvh], scroll internal combination list.
 
-import { useState } from 'react';
-import { calculateAutoBalance } from '@/lib/math-engine/addition-generator';
+import { Button } from '@/components/layout/button/button';
 import {
   itqanDigitCombinationsMap,
   itqanDigitPresetsMap,
 } from '@/data/itqan-math/digits';
+import { calculateAutoBalance } from '@/lib/math-engine/addition-generator';
 import { cn } from '@/lib/utils';
-import { Button } from '@/components/layout/button/button';
 import type {
   DigitCombinationItem,
   DigitConfig,
@@ -22,6 +21,7 @@ import type {
   Language,
   TranslationSchema,
 } from '@/types/math/itqan-math';
+import { useState } from 'react';
 
 // ==========================================
 // Tipe Internal
@@ -58,14 +58,16 @@ export function DigitModalLeaf({
 
   // Temp config — perubahan di modal TIDAK merusak config utama sampai Save ditekan
   const [tempPresetId, setTempPresetId] = useState<DigitPresetId>(
-    digitConfig.presetId,
+    digitConfig.presetId
   );
   const [tempCombinations, setTempCombinations] = useState<
     DigitCombinationItem[]
   >(() => {
     // Sinkronisasi teks label & deskripsi kombinasi sesuai bahasa aktif
     return digitConfig.combinations.map((c) => {
-      const localized = localizedCombinationsRef.find((ref) => ref.key === c.key);
+      const localized = localizedCombinationsRef.find(
+        (ref) => ref.key === c.key
+      );
       return {
         ...c,
         label: localized?.label ?? c.label,
@@ -97,8 +99,8 @@ export function DigitModalLeaf({
               // Jika di-disable, reset porsi ke 0
               weightPercent: c.enabled ? 0 : c.weightPercent,
             }
-          : c,
-      ),
+          : c
+      )
     );
   };
 
@@ -109,7 +111,7 @@ export function DigitModalLeaf({
     const parsed = parseInt(rawValue, 10);
     const clamped = isNaN(parsed) ? 0 : Math.max(0, Math.min(100, parsed));
     setTempCombinations((prev) =>
-      prev.map((c) => (c.key === key ? { ...c, weightPercent: clamped } : c)),
+      prev.map((c) => (c.key === key ? { ...c, weightPercent: clamped } : c))
     );
   };
 
@@ -138,34 +140,39 @@ export function DigitModalLeaf({
   return (
     // Backdrop (overlay tipis tanpa memblokir stacking context parent — tidak ada pointer-events-none)
     <div
-      className="fixed inset-0 z-[200] flex items-center justify-center bg-black/60 px-3 backdrop-blur-sm"
-      role="dialog"
-      aria-modal="true"
+      className='fixed inset-0 z-[200] flex items-center justify-center bg-black/60 px-3 backdrop-blur-sm'
+      role='dialog'
+      aria-modal='true'
       aria-label={t.digitModal.title}
     >
       {/* Modal Card — max-h safe untuk 1-viewport 360px × 680px */}
-      <div className="flex w-full max-w-sm flex-col gap-3 overflow-hidden rounded-2xl border border-emerald-500/30 bg-[#030D0A] p-4 shadow-2xl max-h-[85dvh]">
-
+      <div className='flex max-h-[85dvh] w-full max-w-sm flex-col gap-3 overflow-hidden rounded-2xl border border-emerald-500/30 bg-[#030D0A] p-4 shadow-2xl'>
         {/* Modal Header */}
-        <div className="flex items-start justify-between gap-2">
-          <div className="flex flex-col gap-0.5">
-            <h2 className="text-sm font-extrabold text-white">{t.digitModal.title}</h2>
-            <p className="text-[10px] leading-snug text-emerald-300/80">{t.digitModal.subTitle}</p>
+        <div className='flex items-start justify-between gap-2'>
+          <div className='flex flex-col gap-0.5'>
+            <h2 className='text-sm font-extrabold text-white'>
+              {t.digitModal.title}
+            </h2>
+            <p className='text-[10px] leading-snug text-emerald-300/80'>
+              {t.digitModal.subTitle}
+            </p>
           </div>
           <button
-            type="button"
+            type='button'
             onClick={onCancel}
-            aria-label="Close modal"
-            className="mt-0.5 shrink-0 rounded-lg p-1 text-gray-400 transition-colors hover:bg-emerald-900/40 hover:text-white"
+            aria-label='Close modal'
+            className='mt-0.5 shrink-0 rounded-lg p-1 text-gray-400 transition-colors hover:bg-emerald-900/40 hover:text-white'
           >
-            <span aria-hidden="true" className="text-sm leading-none">✕</span>
+            <span aria-hidden='true' className='text-sm leading-none'>
+              ✕
+            </span>
           </button>
         </div>
 
         {/* Tab Selector */}
         <div
-          role="tablist"
-          className="grid grid-cols-2 gap-1 rounded-xl border border-emerald-900/60 bg-[#030D0A]/80 p-1"
+          role='tablist'
+          className='grid grid-cols-2 gap-1 rounded-xl border border-emerald-900/60 bg-[#030D0A]/80 p-1'
         >
           {(
             [
@@ -175,15 +182,15 @@ export function DigitModalLeaf({
           ).map((tab) => (
             <button
               key={tab.id}
-              role="tab"
-              type="button"
+              role='tab'
+              type='button'
               aria-selected={activeTab === tab.id}
               onClick={() => setActiveTab(tab.id)}
               className={cn(
                 'rounded-lg py-1.5 text-[11px] font-bold transition-all',
                 activeTab === tab.id
                   ? 'bg-emerald-500 text-slate-950 shadow-sm'
-                  : 'text-gray-400 hover:text-white',
+                  : 'text-gray-400 hover:text-white'
               )}
             >
               {tab.label}
@@ -193,25 +200,29 @@ export function DigitModalLeaf({
 
         {/* Tab: Instant Presets */}
         {activeTab === 'preset' && (
-          <div className="flex flex-col gap-1.5 overflow-y-auto min-h-0">
+          <div className='flex min-h-0 flex-col gap-1.5 overflow-y-auto'>
             {currentPresets.map((preset) => (
               <button
                 key={preset.id}
-                type="button"
+                type='button'
                 onClick={() => setTempPresetId(preset.id)}
                 className={cn(
                   'flex w-full items-center justify-between rounded-xl border p-2.5 text-left transition-all',
                   tempPresetId === preset.id
                     ? 'border-emerald-500/60 bg-emerald-950/80 text-emerald-200'
-                    : 'border-emerald-900/40 bg-[#030D0A]/60 text-gray-300 hover:border-emerald-700 hover:text-white',
+                    : 'border-emerald-900/40 bg-[#030D0A]/60 text-gray-300 hover:border-emerald-700 hover:text-white'
                 )}
               >
-                <div className="flex flex-col gap-0.5">
-                  <span className="text-xs font-bold">{preset.label}</span>
-                  <span className="text-[10px] text-emerald-300/70">{preset.description}</span>
+                <div className='flex flex-col gap-0.5'>
+                  <span className='text-xs font-bold'>{preset.label}</span>
+                  <span className='text-[10px] text-emerald-300/70'>
+                    {preset.description}
+                  </span>
                 </div>
                 {tempPresetId === preset.id && (
-                  <span className="shrink-0 text-xs font-bold text-emerald-400">✓</span>
+                  <span className='shrink-0 text-xs font-bold text-emerald-400'>
+                    ✓
+                  </span>
                 )}
               </button>
             ))}
@@ -220,13 +231,13 @@ export function DigitModalLeaf({
 
         {/* Tab: Custom Portion (%) */}
         {activeTab === 'custom' && (
-          <div className="flex flex-col gap-2 min-h-0">
+          <div className='flex min-h-0 flex-col gap-2'>
             {/* Auto Balance + Total Portion Bar */}
-            <div className="flex items-center justify-between gap-2">
+            <div className='flex items-center justify-between gap-2'>
               <button
-                type="button"
+                type='button'
                 onClick={handleAutoBalance}
-                className="shrink-0 rounded-lg border border-emerald-700/60 bg-emerald-950/60 px-2 py-1 text-[10px] font-bold text-emerald-300 transition-colors hover:bg-emerald-900/60 hover:text-white"
+                className='shrink-0 rounded-lg border border-emerald-700/60 bg-emerald-950/60 px-2 py-1 text-[10px] font-bold text-emerald-300 transition-colors hover:bg-emerald-900/60 hover:text-white'
               >
                 {t.digitModal.autoBalance}
               </button>
@@ -235,7 +246,7 @@ export function DigitModalLeaf({
                   'rounded-lg px-2 py-1 text-[10px] font-bold',
                   totalPercent === 100
                     ? 'bg-emerald-500/15 text-emerald-300'
-                    : 'bg-red-500/15 text-red-400',
+                    : 'bg-red-500/15 text-red-400'
                 )}
               >
                 {t.digitModal.totalPortion} {totalPercent}%
@@ -243,7 +254,7 @@ export function DigitModalLeaf({
             </div>
 
             {/* Combination List — scroll internal */}
-            <div className="flex flex-col gap-1 overflow-y-auto min-h-0 max-h-[260px] pr-0.5">
+            <div className='flex max-h-[260px] min-h-0 flex-col gap-1 overflow-y-auto pr-0.5'>
               {tempCombinations.map((combo) => (
                 <div
                   key={combo.key}
@@ -251,54 +262,56 @@ export function DigitModalLeaf({
                     'flex items-center gap-2 rounded-xl border p-2 transition-all',
                     combo.enabled
                       ? 'border-emerald-800/60 bg-[#061A14]'
-                      : 'border-slate-900/60 bg-slate-950/40 opacity-50',
+                      : 'border-slate-900/60 bg-slate-950/40 opacity-50'
                   )}
                 >
                   {/* Toggle checkbox */}
                   <button
-                    type="button"
-                    role="checkbox"
+                    type='button'
+                    role='checkbox'
                     aria-checked={combo.enabled}
                     onClick={() => handleToggleCombination(combo.key)}
                     className={cn(
                       'flex h-4 w-4 shrink-0 items-center justify-center rounded border text-[9px] font-bold transition-all',
                       combo.enabled
                         ? 'border-emerald-500 bg-emerald-500 text-slate-950'
-                        : 'border-gray-600 bg-transparent text-transparent',
+                        : 'border-gray-600 bg-transparent text-transparent'
                     )}
                   >
                     ✓
                   </button>
 
                   {/* Label */}
-                  <div className="flex flex-1 flex-col gap-0 min-w-0">
-                    <span className="truncate text-[10px] font-bold text-white">
+                  <div className='flex min-w-0 flex-1 flex-col gap-0'>
+                    <span className='truncate text-[10px] font-bold text-white'>
                       {combo.label}
                     </span>
-                    <span className="text-[9px] text-emerald-300/60">
+                    <span className='text-[9px] text-emerald-300/60'>
                       {combo.maxDigitDescription}
                     </span>
                   </div>
 
                   {/* Weight Input */}
-                  <div className="flex shrink-0 items-center gap-0.5">
+                  <div className='flex shrink-0 items-center gap-0.5'>
                     <input
-                      type="number"
-                      inputMode="numeric"
+                      type='number'
+                      inputMode='numeric'
                       min={0}
                       max={100}
                       disabled={!combo.enabled}
                       value={combo.enabled ? combo.weightPercent : 0}
-                      onChange={(e) => handleWeightChange(combo.key, e.target.value)}
+                      onChange={(e) =>
+                        handleWeightChange(combo.key, e.target.value)
+                      }
                       onKeyDown={(e) => {
                         if (['.', ',', 'e', 'E', '+', '-'].includes(e.key)) {
                           e.preventDefault();
                         }
                       }}
                       onWheel={(e) => e.currentTarget.blur()}
-                      className="w-10 rounded-lg border border-emerald-800/60 bg-[#030D0A] py-0.5 text-center text-[11px] font-bold text-white focus:border-emerald-500 focus:outline-none disabled:opacity-40"
+                      className='w-10 rounded-lg border border-emerald-800/60 bg-[#030D0A] py-0.5 text-center text-[11px] font-bold text-white focus:border-emerald-500 focus:outline-none disabled:opacity-40'
                     />
-                    <span className="text-[10px] text-emerald-400/70">%</span>
+                    <span className='text-[10px] text-emerald-400/70'>%</span>
                   </div>
                 </div>
               ))}
@@ -307,20 +320,20 @@ export function DigitModalLeaf({
         )}
 
         {/* Modal Footer: Cancel + Save */}
-        <div className="flex gap-2 pt-1">
+        <div className='flex gap-2 pt-1'>
           <Button
-            type="button"
-            variant="outline"
-            size="sm"
+            type='button'
+            variant='outline'
+            size='sm'
             fullWidth
             onClick={onCancel}
           >
             {t.digitModal.cancelBtn}
           </Button>
           <Button
-            type="button"
-            variant="primary"
-            size="sm"
+            type='button'
+            variant='primary'
+            size='sm'
             fullWidth
             disabled={isSaveDisabled}
             onClick={handleSave}

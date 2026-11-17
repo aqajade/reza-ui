@@ -5,17 +5,19 @@ Gunakan prompt di bawah ini saat kamu meminta Gemini merancang fitur baru atau t
 ---
 
 ```markdown
-Halo Gemini! Saya ingin kita merancang prototipe fitur untuk project **ItqanMath** yang dibangun di atas arsitektur **reza-ui** (Next.js 16 App Router, React 19, Tailwind CSS v4, TypeScript Strict, Doktrin rscoClsDdSdDryZaapeiFpSMbBip).
+Halo Gemini! Saya ingin kita merancang prototipe fitur untuk project **ItqanMath** yang dibangun di atas arsitektur **reza-ui** (Next.js 16 App Router, React 19, Tailwind CSS v4, TypeScript Strict, Doktrin rscoClsDdSdDryZaapeiFpSMBip).
 
 Berikut adalah konteks arsitektur dan aturan main di repository kami (dari folder `.ai/`):
 [Lampirkan/Tempel isi berkas .ai/ARCHITECTURE.md, .ai/DECISIONS.md, dan .ai/WORKFLOW.md di sini jika diperlukan]
 
 ### KEBUTUHAN FITUR YANG INGIN DIRANCANG:
+
 [Jelaskan fitur yang kamu inginkan, misal: Fitur Pengurangan, Mode Pilihan Ganda, dsb.]
 
 ---
 
 ### ATURAN WAJIB UNTUK GEMINI DALAM MENYUSUN SPESIFIKASI:
+
 1. **Bahasa Penamaan Kode (Strict English Naming):**
    - SELURUH nama tipe data (`type`), variabel, fungsi, konstanta, dan properti WAJIB menggunakan Bahasa Inggris formal.
    - DILARANG KERAS mencampur Bahasa Indonesia pada identifier kode (contoh: DILARANG `TotalSoalOption`, `totalSoal`, `kombinasiDigit`; WAJIB `TotalQuestionsOption`, `totalQuestions`, `digitCombination`). Komentar/deskripsi teks tetap boleh Bahasa Indonesia.
@@ -31,7 +33,9 @@ Berikut adalah konteks arsitektur dan aturan main di repository kami (dari folde
 ---
 
 ### OUTPUT YANG DIHARAPKAN DARI GEMINI:
+
 Tolong berikan 2 output:
+
 1. **Dokumen BNHS (`blueprint-n-handover-specification.md`)** dengan struktur baku:
    - 🏛️ Metadata & Target Doktrin
    - 🤝 Peran & Pembagian Kerja (Product Owner, Antigravity, Gemini)

@@ -13,7 +13,7 @@ import HeaderLanguageSelector from '@/components/ui/HeaderLanguageSelector';
  * HeaderItqanMath – Zero‑props Server Component.
  * All layout configuration is injected by the surrounding <DataInjector> in the parent.
  *
- * Mengikuti Doktrin: rscoClsDdSdDryZaapeiFpSMbBip
+ * Mengikuti Doktrin: rscoClsDdSdDryZaapeiFpSMBip
  * - RSCO: 100% Server Component, zero JS runtime dikirim untuk layout header.
  * - CLS: <HeaderLanguageSelector /> bertindak sebagai Client Leaf mandiri di pojok kanan.
  * - ZAAPEI: Zero interface, zero props drilling manual di primitif layout reza-ui.
