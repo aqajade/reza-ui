@@ -6,11 +6,11 @@ import { DataInjector } from '@/components/layout/DataInjector';
 import { PageSection } from '@/components/layout/PageSection';
 import { FooterItqanMath } from '@/components/sections/FooterItqanMath';
 import { HeaderItqanMath } from '@/components/sections/HeaderItqanMath';
-import { PracticeSetup } from '@/components/sections/PracticeSetup';
 import type { LandingPageData } from '@/types/layout/landing-page';
 
 import { SectionHeader } from '../layout/header/SectionHeader';
 import { SectionStack } from '../layout/stack/SectionStack';
+import PracticeEngineLeaf from '../ui/practice/PracticeEngineLeaf';
 
 export type LandingItqanMathProps = {
   data: LandingPageData['landingItqanMath'];
@@ -59,13 +59,13 @@ export function LandingItqanMath({
                   Form ini di-serialisasi KOSONG ke browser: semua label &
                   opsi dirender di server sebagai children. JS klien hanya
                   memuat state total/timer. */}
-            <PracticeSetup />
+            <PracticeEngineLeaf />
           </SectionStack>
           {/* 3. Footer Modular
               DataInjector auto-swap ke slots.FooterItqanMath untuk seluruh sub-tree ini. */}
           <FooterItqanMath />
         </CustomContainer>
       </PageSection>
-    </DataInjector>
+    </DataInjector> 
   );
 }
