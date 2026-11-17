@@ -12,17 +12,20 @@ import { useEffect, useState } from 'react';
 import { itqanDictionary } from '@/data/itqan-math/dictionary';
 import { itqanDefaultCombinations } from '@/data/itqan-math/digits';
 import { itqanModulesMap } from '@/data/itqan-math/modules';
+import { generateAdditionQuestions } from '@/lib/math-engine/addition-generator';
 import type {
   AppState,
   DigitConfig,
   Language,
   ModuleId,
+  QuestionItem,
   QuizConfig,
 } from '@/types/math/itqan-math';
 
 import { DigitModalLeaf } from './DigitModalLeaf';
 import { HomeMenuView } from './HomeMenuView';
 import { ModuleSetupView } from './ModuleSetupView';
+import { PracticeSessionView } from './PracticeSessionView';
 
 // ==========================================
 // Props
@@ -78,6 +81,9 @@ export function PracticeEngineLeaf({
   // --- Quiz Config State ---
   const [config, setConfig] = useState<QuizConfig>(DEFAULT_QUIZ_CONFIG);
 
+  // --- Questions State (Generated saat masuk 'practicing') ---
+  const [questions, setQuestions] = useState<QuestionItem[]>([]);
+
   // --- Digit Modal State ---
   const [isDigitModalOpen, setIsDigitModalOpen] = useState<boolean>(false);
 
@@ -114,10 +120,29 @@ export function PracticeEngineLeaf({
     setIsDigitModalOpen(false);
   };
 
-  // Handler: Mulai Latihan (Placeholder Step 1.5)
+  // Handler: Mulai Latihan — Generate Soal secara murni programatik & aktifkan practicing
   const handleStartPractice = () => {
-    // Akan diaktifkan pada Step 1.5 (Sesi Latihan / Practicing)
+    const generated = generateAdditionQuestions(config);
+    setQuestions(generated);
     setAppState('practicing');
+  };
+
+  // Handler: Selesai Sesi Latihan — Evaluasi Jawaban & beralih ke result
+  const handleFinishPractice = (finalQuestions: QuestionItem[]) => {
+    const evaluated = finalQuestions.map((q) => {
+      const parsedAns = q.userAnswer ? parseInt(q.userAnswer, 10) : NaN;
+      return {
+        ...q,
+        isCorrect: parsedAns === q.correctAnswer,
+      };
+    });
+    setQuestions(evaluated);
+    setAppState('result');
+  };
+
+  // Handler: Batal Sesi Latihan (Quit) — kembali ke module-setup
+  const handleQuitPractice = () => {
+    setAppState('module-setup');
   };
 
   // ==========================================
@@ -150,11 +175,16 @@ export function PracticeEngineLeaf({
         />
       )}
 
-      {/* STATE 3: PRACTICING (Step 1.5 Placeholder) */}
+      {/* STATE 3: PRACTICING (Step 1.5 Selesai) */}
       {appState === 'practicing' && (
-        <div className='py-8 text-center text-xs text-gray-400'>
-          Practicing Session (Step 1.5)
-        </div>
+        <PracticeSessionView
+          t={t}
+          interactiveMode={config.interactiveMode}
+          timer={config.timer}
+          questions={questions}
+          onFinishSession={handleFinishPractice}
+          onQuitSession={handleQuitPractice}
+        />
       )}
 
       {/* STATE 4: RESULT (Step 1.6 Placeholder) */}
